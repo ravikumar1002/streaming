@@ -1,0 +1,2 @@
+
+export {HeroImg} from "./Hero"

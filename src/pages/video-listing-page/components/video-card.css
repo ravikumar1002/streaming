@@ -1,0 +1,32 @@
+.video-card {
+  width: 20rem;
+}
+
+.video-card-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  gap: 1.5rem;
+  position: relative;
+}
+
+.toggle-video-menu {
+  position: absolute;
+  right: 0;
+  width: 10rem;
+  background: var(--dark-white-bg);
+  top: 2rem;
+  height: auto;
+  padding: 0.5rem;
+  margin: 0.5rem 0rem;
+  z-index: 5;
+}
+
+.toggle-video-menu > div {
+  margin: 0.5rem 0rem;
+}
+
+.video-card-img {
+  max-width: 20rem;
+  max-height: 15rem;
+}
