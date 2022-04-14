@@ -1,0 +1,19 @@
+.aside-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 5rem;
+  padding: 1rem;
+  align-items: center;
+}
+
+.aside-bar i {
+  font-size: 1.2rem;
+  padding: 0.5rem 0rem;
+}
+
+.aside-bar-wrapper {
+  position: sticky;
+  top: 4.5rem;
+  left: 5%;
+}
