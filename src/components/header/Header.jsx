@@ -32,7 +32,7 @@ export const Header = () => {
                     <li className="list-style-none">
                         <button>
                             <Link
-                                to="/signup"
+                                to="/login"
                                 className="nav-btn-primary nav-text-primary "
                             >
                                 <span className="btn btn-secondary btn-sm border-squre">
