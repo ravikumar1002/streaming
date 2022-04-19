@@ -26,13 +26,13 @@ export const AsideBar = () => {
                     </span>
                 </NavLink >
 
-                <NavLink style={getActiveStyle} to="videos">
+                <NavLink style={getActiveStyle} to="/">
                     <span>
                         <i className="fa-solid fa-clock"></i>
                     </span>
                 </NavLink>
 
-                <NavLink style={getActiveStyle} to="/">
+                <NavLink style={getActiveStyle} to="PlayList">
                     <span>
                         <i className="fa-solid fa-list-ul"></i>
                     </span>
