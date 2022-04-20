@@ -61,7 +61,7 @@ export const SignUp = () => {
                             </button>
                         </div>
                         <div className="text-center">
-                            <Link to="login" className="btn-icon-text-right text-underline-none centre ">Already have an account <i className="fas fa-angle-right fs-md"></i></Link>
+                            <Link to="/login" className="btn-icon-text-right text-underline-none centre ">Already have an account <i className="fas fa-angle-right fs-md"></i></Link>
                         </div>
 
                     </form>

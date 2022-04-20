@@ -36,7 +36,7 @@ export const Header = () => {
                                 className="nav-btn-primary nav-text-primary "
                             >
                                 <span className="btn btn-secondary btn-sm border-squre">
-                                    signUp
+                                    Login
                                 </span>
                             </Link>
                         </button>

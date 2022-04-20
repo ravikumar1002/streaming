@@ -60,7 +60,7 @@ export const Login = () => {
                             </button>
                         </div>
                         <div className="text-center">
-                            <Link to="login" className="btn-icon-text-right text-underline-none centre ">Create New Account <i className="fas fa-angle-right fs-md"></i></Link>
+                            <Link to="/signup" className="btn-icon-text-right text-underline-none centre ">Create New Account <i className="fas fa-angle-right fs-md"></i></Link>
                         </div>
 
                     </form>
