@@ -1,8 +1,9 @@
 import "./header.css"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 
 export const Header = () => {
-
+     const location = useLocation()
+     console.log(location.state)
     return (
 
         <header className="flex-space-around p-2 nav-bg-primary">
@@ -33,6 +34,7 @@ export const Header = () => {
                         <button>
                             <Link
                                 to="/login"
+                                state={location.state}
                                 className="nav-btn-primary nav-text-primary "
                             >
                                 <span className="btn btn-secondary btn-sm border-squre">

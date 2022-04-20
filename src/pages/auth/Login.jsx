@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { useState } from "react"
 import "./auth.css"
 import { useAuth } from "../../context/auth-context"
 export const Login = () => {
-
+    const location = useLocation()
     const { userlogin } = useAuth()
     const [loginDetail, setloginDetail] = useState({
         email: "",
@@ -60,7 +60,7 @@ export const Login = () => {
                             </button>
                         </div>
                         <div className="text-center">
-                            <Link to="/signup" className="btn-icon-text-right text-underline-none centre ">Create New Account <i className="fas fa-angle-right fs-md"></i></Link>
+                            <Link to="/signup" state={location.state} className="btn-icon-text-right text-underline-none centre ">Create New Account <i className="fas fa-angle-right fs-md"></i></Link>
                         </div>
 
                     </form>

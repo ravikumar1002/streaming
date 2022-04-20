@@ -4,7 +4,7 @@ import "./auth.css"
 import { useAuth } from "../../context/auth-context"
 
 export const SignUp = () => {
-
+    const location  = useLocation()
     const { userSignUp } = useAuth()
     const [signupDetail, setSignupDetail] = useState({
         email: "",
@@ -61,7 +61,7 @@ export const SignUp = () => {
                             </button>
                         </div>
                         <div className="text-center">
-                            <Link to="/login" className="btn-icon-text-right text-underline-none centre ">Already have an account <i className="fas fa-angle-right fs-md"></i></Link>
+                            <Link to="/login" state={location.state} className="btn-icon-text-right text-underline-none centre ">Already have an account <i className="fas fa-angle-right fs-md"></i></Link>
                         </div>
 
                     </form>
