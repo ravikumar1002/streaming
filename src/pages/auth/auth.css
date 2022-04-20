@@ -1,0 +1,20 @@
+
+.modal-container{
+    display: flex;
+    width: 100%;
+}
+
+.auth-wrapper {
+  width: 25rem;
+  padding: 2rem;
+  gap: 1rem;
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--light-bg);
+}
+
+
+.auth-position {
+  height: 35rem;
+}
