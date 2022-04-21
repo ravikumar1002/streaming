@@ -1,6 +1,6 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { signupHandler, loginHandler } from "../api-calls/getAuth";
+import { signupHandler, loginHandler } from "../api-calls/index";
 
 export const authContext = createContext({})
 
@@ -8,6 +8,16 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState()
     const location = useLocation()
     const navigate = useNavigate()
+
+    // const localStrogeItem = JSON.parse(localStorage.getItem("userHasLogged"))
+    // useEffect(() => {
+    //     if(localStrogeItem?.token){
+    //         (async() => {
+    //             const data = await signupHandler(localStrogeItem.user.email, localStrogeItem.user.password)
+    //             setUser(data)
+    //         })()
+    //     }
+    // },[localStrogeItem])
 
     const userSignUp = async ({ email, password }) => {
         const data = await signupHandler(email, password)

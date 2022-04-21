@@ -9,7 +9,7 @@ const VideoCard = ({ video }) => {
             <div className="-video-card-body">
                 <div className="video-card-content">
                     <VideoCardContent heading={video.title} />
-                    <VideoCardMenu />
+                    <VideoCardMenu item = {video} />
                 </div>
                 <div>
                     <VideoCardFooter date={video.uploadDate} creator={video.creator} />

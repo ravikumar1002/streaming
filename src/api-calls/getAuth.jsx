@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const signupHandler = async (email, password) => {
+export const signupHandler = async (email, password) => {
   console.log(email, password)
   try {
     const response = await axios.post(`/api/auth/signup`, {
@@ -17,7 +17,7 @@ const signupHandler = async (email, password) => {
 };
 
 
-const loginHandler = async (email, password) => {
+export const loginHandler = async (email, password) => {
   console.log(email, password)
   try {
     const response = await axios.post(`/api/auth/login`, {
@@ -33,5 +33,3 @@ const loginHandler = async (email, password) => {
     throw error
   }
 };
-
-export { signupHandler, loginHandler }
