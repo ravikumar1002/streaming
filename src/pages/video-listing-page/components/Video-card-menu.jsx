@@ -10,9 +10,9 @@ export const VideoCardMenu = ({ item }) => {
     return (
         <>
             <button onClick={(e) => {
-                setShowVideoMenuContent(true)
-                e.stopPropagation();
-                console.log(e.stopPropagation())
+                setShowVideoMenuContent(!showVideoMenuContent)
+                // e.stopPropagation();
+                // console.log(e.stopPropagation())
                 }}>
                 <i className="fa-solid fa-ellipsis-vertical btn-sm"></i>
             </button>
