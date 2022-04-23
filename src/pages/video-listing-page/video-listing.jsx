@@ -12,7 +12,6 @@ export const VideosListing = () => {
     return (
         <div className="videos-page">
             {showPageVideo.length > 0 ? showPageVideo.map((video) => {
-                console.log(video)
                 return (
                     <div key={video._id}>
                         <VideoCard video={video} />

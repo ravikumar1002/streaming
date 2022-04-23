@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom"
 
 export const Header = () => {
      const location = useLocation()
-     console.log(location.state)
     return (
 
         <header className="flex-space-around p-2 nav-bg-primary">

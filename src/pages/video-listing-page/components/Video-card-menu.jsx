@@ -8,12 +8,11 @@ export const VideoCardMenu = ({ item }) => {
     const [elementTarget, setElementTarget] = useState()
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
-    // window.onclick = function (e) {
-    //     if (e.target !== elementTarget) {
-    //         setShowVideoMenuContent(false)
-    //     }
-    // }
-
+    window.onclick = function (e) {
+        if (e.target !== elementTarget) {
+            setShowVideoMenuContent(false)
+        }
+    }
 
     return (
         <>

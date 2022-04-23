@@ -8,12 +8,10 @@ export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
 
     const deleteVideoInPLaylist = async (playlistId, videoId, authToken) => {
         const deletedVideoPlaylist = await deleteVideoFromPlaylist(playlistId, videoId, authToken)
-        console.log(userDataState)
         const playlistDataAfterDeleted = userDataState.playlist.reduce((prev, curr) =>
             curr._id === deletedVideoPlaylist.playlist._id
                 ? [...prev, deletedVideoPlaylist.playlist]
                 : [...prev, curr], [])
-        console.log(playlistDataAfterDeleted)
         userDataDispatch({
             type: "PLAYLIST_AFTER_VIDEO_DELETE",
             payload: {
@@ -25,7 +23,7 @@ export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
     return (
         <div className="playlist-video">
             <div className="playlist-video-img">
-                <img src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`} alt="" />
+                <img src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`} alt={video.title} />
             </div>
             <div className="playlist-video-title">
                 <h3>{video.title}</h3>

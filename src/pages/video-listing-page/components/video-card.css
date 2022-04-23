@@ -38,7 +38,7 @@
 }
 
 .toggle-video-menu > div:hover {
-  background-color: antiquewhite;
+  background-color: var(--secondary-bg);
 }
 
 .toggle-video-menu > div > i {

@@ -26,7 +26,7 @@ export const SinglePlaylistPage = () => {
             {videosInCurrentPlaylist?.videos.length > 0 ? videosInCurrentPlaylist?.videos.map((video) => {
                 return (
                     <div key={video._id}>
-                        <PlaylistVideo video={video} playlistIdForVideo= {videosInCurrentPlaylist._id}/>
+                        <PlaylistVideo video={video} playlistIdForVideo={videosInCurrentPlaylist._id} />
                     </div>
                 )
             }) : <p>empty Playlist</p>}

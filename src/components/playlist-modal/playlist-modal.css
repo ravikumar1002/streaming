@@ -16,8 +16,8 @@
 .playlist-modal {
   width: 15rem;
   padding: 0.5rem;
-  border: 1px solid black;
-  background: aliceblue;
+  border: 1px solid var(--dark);
+  background: var(--light-bg);
 }
 
 .playlist-modal > ul{
@@ -56,10 +56,6 @@
 .new-playlist-create > input {
   padding: 0.3rem;
 }
-
-/* .new-playlist {
-  margin: 0.5rem 0rem;
-} */
 
 .new-playlist i {
   font-size: 1.2rem;

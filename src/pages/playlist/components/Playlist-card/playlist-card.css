@@ -11,13 +11,13 @@
   top: 0;
   right: 0;
   width: 40%;
-  background: aliceblue;
+  background: var(--ligh);
   height: 100%;
   opacity: 0.8;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: black;
+  color: var(--dark);
 }
 
 
@@ -27,7 +27,7 @@
   align-items: center;
   height: 3rem;
   padding: 0.5rem 1rem;
-  color: black;
+  color: var(--dark);
 }
 
 /* .playlist-card-tilte-section >  */
