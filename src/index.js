@@ -16,7 +16,7 @@ ReactDOM.render(
       <VideoProvider>
         <AuthProvider>
           <UserDataProvider>
-          <App />
+            <App />
           </UserDataProvider>
         </AuthProvider>
       </VideoProvider>

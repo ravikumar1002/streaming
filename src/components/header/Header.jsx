@@ -58,7 +58,7 @@ export const Header = () => {
                             <i className="fa-solid fa-moon"></i>
                         </button>
                         {/* <button>
-                        <i class="fa-solid fa-sun"></i>
+                        <i className="fa-solid fa-sun"></i>
                         </button> */}
                     </li>
                 </ul>

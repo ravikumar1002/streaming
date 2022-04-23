@@ -40,3 +40,7 @@
 .toggle-video-menu > div:hover {
   background-color: antiquewhite;
 }
+
+.toggle-video-menu > div > i {
+  margin: 0 1rem 0 0.5rem;
+}

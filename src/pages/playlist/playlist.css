@@ -1,0 +1,15 @@
+.playlist-page{
+    width: 100%;
+}
+
+.playlist-page > h3{
+    text-align: center;
+    padding: 2rem;
+}
+
+.playlist-card-wrapper {
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}

@@ -17,7 +17,7 @@ export const SinglePlaylistPage = () => {
 
     useEffect(() => {
         getVideosInPlaylist(userDataState.playlist, playlistid)
-    }, [])
+    }, [userDataState.playlist])
 
     return (
         <div>
@@ -26,7 +26,7 @@ export const SinglePlaylistPage = () => {
             {videosInCurrentPlaylist?.videos.length > 0 ? videosInCurrentPlaylist?.videos.map((video) => {
                 return (
                     <div key={video._id}>
-                        <PlaylistVideo video={video} />
+                        <PlaylistVideo video={video} playlistIdForVideo= {videosInCurrentPlaylist._id}/>
                     </div>
                 )
             }) : <p>empty Playlist</p>}

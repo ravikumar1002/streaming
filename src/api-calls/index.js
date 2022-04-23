@@ -1,3 +1,3 @@
 export { getAllVideos } from "./getAllVideos";
 export  { signupHandler, loginHandler } from "./getAuth"
-export {getPlaylist, postPlaylist, postVideoInPlaylist} from "./getPlaylist"
+export {getPlaylist, postPlaylist, postVideoInPlaylist, deletePlaylist, deleteVideoFromPlaylist} from "./getPlaylist"

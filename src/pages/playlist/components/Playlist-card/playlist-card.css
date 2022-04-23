@@ -1,0 +1,33 @@
+.playlist-card-top {
+  position: relative;
+}
+
+.playlist-card-top > div {
+  height: 10rem;
+}
+
+.playlist-card-count-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  background: aliceblue;
+  height: 100%;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+
+.playlist-card-tilte-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  color: black;
+}
+
+/* .playlist-card-tilte-section >  */

@@ -25,7 +25,7 @@ function App() {
           <div>
             <AsideBar />
           </div>
-          <div>
+          <div className="w-100">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/videos" element={<VideosListing />} />
