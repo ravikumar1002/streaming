@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 
 const userDataReducer = (state, action) => {
 
@@ -9,25 +8,6 @@ const userDataReducer = (state, action) => {
                 ...state,
                 playlist: action.payload.playlistVideoData
             }
-
-        case "ADD_PAYLIST_BY_POST":
-            return {
-                ...state,
-                playlist: action.payload.postPlaylistData
-            }
-
-        case "AFTER_DELETED_PLAYLIST":
-            return {
-                ...state,
-                playlist: action.payload.afterDeletedPlaylist
-            }
-
-        case "PLAYLIST_AFTER_VIDEO_DELETE":
-            return {
-                ...state,
-                playlist: action.payload.deleteVideoInPlaylist
-            }
-
     }
 }
 

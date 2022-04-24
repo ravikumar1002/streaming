@@ -8,6 +8,7 @@ import {
   SignUp,
   PlayList,
   SinglePlaylistPage,
+  SingleVideoPage
 } from "./pages/index";
 import { Routes, Route, Link } from "react-router-dom";
 import DataLayer from "./Data-layer";
@@ -31,6 +32,7 @@ function App() {
               <Route path="/videos" element={<VideosListing />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/singlevideo" element={<SingleVideoPage/>} />
               <Route path="/mockman" element={<Mockman />} />
               <Route
                 path="/playlist"
@@ -49,6 +51,7 @@ function App() {
                 }
               />
               <Route path="*" />
+
             </Routes>
           </div>
         </div>

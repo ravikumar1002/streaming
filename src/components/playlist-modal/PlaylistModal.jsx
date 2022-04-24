@@ -15,12 +15,13 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
     const createNewPlayList = async (nameOfPlaylist, authToken) => {
         const getNewPlaylist = await postPlaylist(nameOfPlaylist, authToken)
         userDataDispatch({
-            type: "ADD_PAYLIST_BY_POST",
+            type: "USER_ALL_PLAYLIST",
             payload: {
-                postPlaylistData: getNewPlaylist.playlists
+                playlistVideoData: getNewPlaylist.playlists
             }
         })
     };
+
     const addNewVideoInPlayList = async (playlistId, videoForAdd, authToken) => {
         const getNewVideoInPlaylist = await postVideoInPlaylist(playlistId, videoForAdd, authToken)
     };
