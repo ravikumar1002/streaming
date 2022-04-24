@@ -13,13 +13,13 @@
 .toggle-video-menu {
   position: absolute;
   right: 0;
-  width: 10rem;
+  width: 15rem;
   background: var(--dark-white-bg);
   top: 2rem;
   height: auto;
-  padding: 0.5rem;
-  margin: 0.5rem 0rem;
-  z-index: 5;
+  /* padding: 0.5rem; */
+  margin: 0.5rem 0.5rem;
+  z-index: 3;
 }
 
 .toggle-video-menu > div {
@@ -29,4 +29,18 @@
 .video-card-img {
   max-width: 20rem;
   max-height: 15rem;
+}
+
+.toggle-video-menu > div {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.toggle-video-menu > div:hover {
+  background-color: var(--secondary-bg);
+}
+
+.toggle-video-menu > div > i {
+  margin: 0 1rem 0 0.5rem;
 }

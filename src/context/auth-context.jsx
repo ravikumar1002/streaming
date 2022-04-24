@@ -1,32 +1,44 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { signupHandler, loginHandler } from "../api-calls/getAuth";
+import { signupHandler, loginHandler } from "../api-calls/index";
 
 export const authContext = createContext({})
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState()
-    const location = useLocation()
+    const [user, setUser] = useState({
+        encodedToken: '',
+        userData: {}
+    })
+    // const location = useLocation()
     const navigate = useNavigate()
 
-    const userSignUp = async ({ email, password }) => {
+    const localStrogeItem = JSON.parse(localStorage.getItem("userHasLogged"))
+    
+    const userSignUp = async ({ email, password}, location) => {
+        console.log(email, password ,location)
         const data = await signupHandler(email, password)
         localStorage.setItem(
             'userHasLogged',
             JSON.stringify({ token: data?.encodedToken, user: data?.createdUser })
         );
-        setUser(data)
+        setUser({
+            encodedToken: data?.encodedToken,
+            userData : data?.createdUser
+        })
         navigate(location?.state?.from?.pathname)
     }
 
-    const userlogin = async({ email, password }) => {
+    const userlogin = async({ email, password},location) => {
         const data = await loginHandler(email, password)
         console.log(data)
         localStorage.setItem(
             'userHasLogged',
             JSON.stringify(data)
         );
-        setUser(data)
+        setUser({
+            encodedToken: data?.encodedToken,
+            userData : data?.foundUser
+        })
         navigate(location?.state?.from?.pathname)
     }
 

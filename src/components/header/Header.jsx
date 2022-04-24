@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom"
 
 export const Header = () => {
      const location = useLocation()
-     console.log(location.state)
     return (
 
         <header className="flex-space-around p-2 nav-bg-primary">
@@ -58,7 +57,7 @@ export const Header = () => {
                             <i className="fa-solid fa-moon"></i>
                         </button>
                         {/* <button>
-                        <i class="fa-solid fa-sun"></i>
+                        <i className="fa-solid fa-sun"></i>
                         </button> */}
                     </li>
                 </ul>

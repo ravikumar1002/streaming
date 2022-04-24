@@ -16,7 +16,7 @@ export const Login = () => {
                 <div className="modal-container  auth-position">
                     <form action="" className="auth-wrapper" onSubmit={(e) => {
                         e.preventDefault()
-                        userlogin(loginDetail)
+                        userlogin(loginDetail,location)
                     }}>
                         <div>
                             <h2 className="text-center">login</h2>
