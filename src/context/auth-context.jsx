@@ -42,15 +42,6 @@ const AuthProvider = ({ children }) => {
         navigate(location?.state?.from?.pathname)
     }
 
-    // useEffect(() => {
-    //     if(localStrogeItem?.token){
-    //         (async() => {
-    //             const data = await signupHandler(localStrogeItem.user.email, localStrogeItem.user.password)
-    //             setUser(data)
-    //         })()
-    //     }
-    // },[localStrogeItem?.token === ])
-
     return <authContext.Provider value={{ userSignUp, userlogin, user, token: user?.encodedToken }}>
         {children}
     </authContext.Provider>
