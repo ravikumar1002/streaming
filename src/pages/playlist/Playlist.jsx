@@ -22,9 +22,9 @@ export const PlayList = () => {
     const deletePlaylistFromServer = async (playlistId, authToken) => {
         const getdeletedPlaylist = await deletePlaylist(playlistId, authToken)
         userDataDispatch({
-            type: "AFTER_DELETED_PLAYLIST",
+            type: "USER_ALL_PLAYLIST",
             payload: {
-                afterDeletedPlaylist: getdeletedPlaylist.playlists
+                playlistVideoData: getdeletedPlaylist.playlists
             }
         })
     }

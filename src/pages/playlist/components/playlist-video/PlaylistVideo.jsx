@@ -13,9 +13,9 @@ export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
                 ? [...prev, deletedVideoPlaylist.playlist]
                 : [...prev, curr], [])
         userDataDispatch({
-            type: "PLAYLIST_AFTER_VIDEO_DELETE",
+            type: "USER_ALL_PLAYLIST",
             payload: {
-                deleteVideoInPlaylist: playlistDataAfterDeleted
+                playlistVideoData: playlistDataAfterDeleted
             }
         })
     }

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAuth } from "../../../context/auth-context";
-import { PlaylistModal } from "../../../components/playlist-modal/PlaylistModal";
+import { useAuth } from "../../context/auth-context";
+import { PlaylistModal } from "../index";
 
 export const VideoCardMenu = ({ item }) => {
     const { token } = useAuth();

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useVideoDataFromServer } from "../../context/video-context"
-import VideoCard from "./components/Video-Card"
+import { VideoCard } from "../../components"
 import "./video-listing.css"
 
 export const VideosListing = () => {

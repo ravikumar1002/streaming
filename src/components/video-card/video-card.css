@@ -8,6 +8,12 @@
   padding: 0.5rem;
   gap: 1.5rem;
   position: relative;
+  margin-right: 2rem;
+}
+
+.video-card-link{
+  text-decoration: none;
+  color: black;
 }
 
 .toggle-video-menu {
