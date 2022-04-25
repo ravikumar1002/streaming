@@ -26,7 +26,7 @@ export const AsideBar = () => {
                     </span>
                 </NavLink >
 
-                <NavLink style={getActiveStyle} to="/">
+                <NavLink style={getActiveStyle} to="/watchlater">
                     <span>
                         <i className="fa-solid fa-clock"></i>
                     </span>

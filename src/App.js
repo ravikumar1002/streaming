@@ -8,7 +8,8 @@ import {
   SignUp,
   PlayList,
   SinglePlaylistPage,
-  SingleVideoPage
+  SingleVideoPage,
+  WatchLater,
 } from "./pages/index";
 import { Routes, Route, Link } from "react-router-dom";
 import DataLayer from "./Data-layer";
@@ -47,6 +48,14 @@ function App() {
                 element={
                   <RequiresAuth>
                     <SinglePlaylistPage />
+                  </RequiresAuth>
+                }
+              />
+              <Route
+                path="/watchlater"
+                element={
+                  <RequiresAuth>
+                    < WatchLater/>
                   </RequiresAuth>
                 }
               />
