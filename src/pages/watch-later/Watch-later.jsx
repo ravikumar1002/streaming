@@ -16,7 +16,6 @@ export const WatchLater = () => {
                 watchLaterVideos: getWatchLaterData.watchlater
             }
         })
-        console.log(getWatchLaterData)
     }
 
     useEffect(() => {
