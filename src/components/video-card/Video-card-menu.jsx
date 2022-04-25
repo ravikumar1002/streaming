@@ -35,7 +35,6 @@ export const VideoCardMenu = ({ item }) => {
             authToken,
             watchLatervideoId
         );
-        console.log(deleteWatchLaterVideoInServer)
         userDataDispatch({
             type: "WATCH_LATER_VIDEOS",
             payload: {
