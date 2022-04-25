@@ -57,7 +57,6 @@ export const VideoCardMenu = ({ item }) => {
             </button>
             {showVideoMenuContent && (
                 <div className="toggle-video-menu">
-                    {/* <div> */}
                     {findExistsOrNot(userDataState.watchLater, item._id) ?
                         <div
                             onClick={() => {
@@ -83,7 +82,6 @@ export const VideoCardMenu = ({ item }) => {
                             <span>Save to Watch Later</span>
                         </div>
                     }
-                    {/* </div> */}
                     <div
                         onClick={() => {
                             if (token) {
