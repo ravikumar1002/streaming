@@ -8,6 +8,12 @@ const userDataReducer = (state, action) => {
                 ...state,
                 playlist: action.payload.playlistVideoData
             }
+
+        case "WATCH_LATER_VIDEOS":
+            return {
+                ...state,
+                watchLater: action.payload.watchLaterVideos
+            }
     }
 }
 
