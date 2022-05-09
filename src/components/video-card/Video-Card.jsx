@@ -1,10 +1,10 @@
 import { VideoCardImg, VideoCardMenu, VideoCardContent, VideoCardFooter } from "./index"
-import { Link } from "react-router-dom"
+import { Link, useParams} from "react-router-dom"
 import "./video-card.css"
 export const VideoCard = ({ video }) => {
     return (
         <div className="video-card" style={{ position: "relative" }}>
-            <Link to="/singlevideo" className="video-card-link">
+            <Link to={`/videos/${video._id}`} className="video-card-link">
                 <div className="video-card-img">
                     <VideoCardImg id={video._id} title={video.title} />
                 </div>

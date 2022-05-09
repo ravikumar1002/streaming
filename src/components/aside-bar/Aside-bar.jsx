@@ -20,7 +20,7 @@ export const AsideBar = () => {
                     </span>
                 </NavLink>
 
-                <NavLink style={getActiveStyle} to="videos">
+                <NavLink style={getActiveStyle} to="liked">
                     <span>
                         <i className="fa-solid fa-heart"></i>
                     </span>

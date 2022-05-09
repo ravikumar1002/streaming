@@ -1,0 +1,26 @@
+.single-video-wrapper {
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.single-video-wrapper > div:first-child{
+  flex-grow: 2;
+}
+
+.single-video-player {
+  max-width: 60rem;
+  height: 30rem;
+}
+
+.single-video-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.single-video-icons > span {
+  margin: 0 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
