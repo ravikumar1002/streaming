@@ -22,7 +22,6 @@ export const loginHandler = async (email, password) => {
       email: email,
       password: password,
     });
-    console.log(response)
     if (response.status === 200 || response.status === 201) {
       return response.data
     }

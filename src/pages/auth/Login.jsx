@@ -16,7 +16,7 @@ export const Login = () => {
                 <div className="modal-container  auth-position">
                     <form action="" className="auth-wrapper" onSubmit={(e) => {
                         e.preventDefault()
-                        userlogin(loginDetail,location)
+                        userlogin(loginDetail, location)
                     }}>
                         <div>
                             <h2 className="text-center">login</h2>
@@ -53,14 +53,13 @@ export const Login = () => {
                                 <label htmlFor="remember-me"> <input type="checkbox" id="remember-me" required autoComplete="off" /> <span>I accept all Terms & Conditions</span></label>
                             </span>
                         </div>
-
                         <div className="text-center">
                             <button className="btn-sm border-squre btn-primary" type="submit" >
                                 Login
                             </button>
                         </div>
                         <div className="text-center">
-                            <Link to="/signup" state={location.state} className="btn-icon-text-right text-underline-none centre ">Create New Account <i className="fas fa-angle-right fs-md"></i></Link>
+                            <Link to="/signup" state={location?.state} className="btn-icon-text-right text-underline-none centre ">Create New Account <i className="fas fa-angle-right fs-md"></i></Link>
                         </div>
 
                     </form>

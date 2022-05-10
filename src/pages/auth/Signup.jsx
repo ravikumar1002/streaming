@@ -1,11 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useState , useEffect} from "react"
 import "./auth.css"
 import { useAuth } from "../../context/auth-context"
 
 export const SignUp = () => {
     const location  = useLocation()
-    const { userSignUp } = useAuth()
+    const { userSignUp, user } = useAuth()
+   
     const [signupDetail, setSignupDetail] = useState({
         email: "",
         password: "",
@@ -17,7 +18,6 @@ export const SignUp = () => {
                 <div className="modal-container  auth-position">
                     <form action="" className="auth-wrapper" onSubmit={(e) => {
                         e.preventDefault()
-                        // console.log(location)
                         userSignUp(signupDetail, location)
                     }}>
                         <div>
@@ -62,9 +62,8 @@ export const SignUp = () => {
                             </button>
                         </div>
                         <div className="text-center">
-                            <Link to="/login" state={location.state} className="btn-icon-text-right text-underline-none centre ">Already have an account <i className="fas fa-angle-right fs-md"></i></Link>
+                            <Link to="/login" state={location?.state} className="btn-icon-text-right text-underline-none centre ">Already have an account <i className="fas fa-angle-right fs-md"></i></Link>
                         </div>
-
                     </form>
                 </div>
             </main>
