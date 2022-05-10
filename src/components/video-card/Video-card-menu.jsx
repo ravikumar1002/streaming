@@ -2,66 +2,59 @@ import { useState } from "react";
 import { useAuth } from "../../context/auth-context";
 import { PlaylistModal } from "../index";
 import { useUserData } from "../../context/user-data-context";
-import { postWatchLaterVideo, deleteWatchLaterVideo } from "../../api-calls";
+import { addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked } from "../../services"
+
 
 export const VideoCardMenu = ({ item }) => {
     const { userDataState, userDataDispatch } = useUserData();
     const { token } = useAuth();
     const [showVideoMenuContent, setShowVideoMenuContent] = useState(false);
-    const [elementTarget, setElementTarget] = useState()
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);
-
-    window.onclick = function (e) {
-        if (e.target !== elementTarget) {
-            setShowVideoMenuContent(false)
-        }
-    }
-
-    const addVideoInWatchLater = async (authToken, watchLatervideo) => {
-        const saveWatchLaterVideoInServer = await postWatchLaterVideo(
-            authToken,
-            watchLatervideo
-        );
-        userDataDispatch({
-            type: "WATCH_LATER_VIDEOS",
-            payload: {
-                watchLaterVideos: saveWatchLaterVideoInServer.watchlater
-            }
-        })
-    };
-
-    const deleteVideoFromWatchLater = async (authToken, watchLatervideoId) => {
-        const deleteWatchLaterVideoInServer = await deleteWatchLaterVideo(
-            authToken,
-            watchLatervideoId
-        );
-        userDataDispatch({
-            type: "WATCH_LATER_VIDEOS",
-            payload: {
-                watchLaterVideos: deleteWatchLaterVideoInServer.watchlater
-            }
-        })
-    };
 
     const findExistsOrNot = (state, value) => {
         return state.find(video => video._id === value) ? true : false
     }
 
-
     return (
         <>
             <button onClick={(e) => {
-                setElementTarget(e.target)
                 setShowVideoMenuContent(!showVideoMenuContent)
             }} className="fa-solid fa-ellipsis-vertical btn-sm" >
             </button>
             {showVideoMenuContent && (
                 <div className="toggle-video-menu">
+                    {findExistsOrNot(userDataState.liked, item._id) ?
+                        <div
+                            onClick={() => {
+                                if (token) {
+                                    deleteVideoFromLiked(token, item._id, userDataDispatch);
+                                } else {
+                                    alert("login first");
+                                }
+                            }}
+                        >
+                            <i className="fa-solid fa-heart"></i>
+                            <span>Remove like</span>
+                        </div>
+                        : <div
+                            onClick={() => {
+                                if (token) {
+                                    addVideoInLiked(token, item, userDataDispatch);
+                                    setShowVideoMenuContent(false);
+                                } else {
+                                    alert("login first");
+                                }
+                            }}
+                        >
+                            <i className="fa-regular fa-heart"></i>
+                            <span>  Add Like </span>
+                        </div>
+                    }
                     {findExistsOrNot(userDataState.watchLater, item._id) ?
                         <div
                             onClick={() => {
                                 if (token) {
-                                    deleteVideoFromWatchLater(token, item._id)
+                                    deleteVideoFromWatchLater(token, item._id, userDataDispatch)
                                 }
                             }}
                         >
@@ -71,7 +64,7 @@ export const VideoCardMenu = ({ item }) => {
                         <div
                             onClick={() => {
                                 if (token) {
-                                    addVideoInWatchLater(token, item);
+                                    addVideoInWatchLater(token, item, userDataDispatch);
                                     setShowVideoMenuContent(false);
                                 } else {
                                     alert("login first");

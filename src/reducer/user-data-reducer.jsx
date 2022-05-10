@@ -14,6 +14,12 @@ const userDataReducer = (state, action) => {
                 ...state,
                 watchLater: action.payload.watchLaterVideos
             }
+
+        case "LIKED_VIDEOS":
+            return {
+                ...state,
+                liked: action.payload.likedVideos
+            }
     }
 }
 
