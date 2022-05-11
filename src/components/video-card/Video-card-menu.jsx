@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useRef, useEffect} from "react";
 import { useAuth } from "../../context/auth-context";
 import { PlaylistModal } from "../index";
 import { useUserData } from "../../context/user-data-context";
@@ -10,18 +10,32 @@ export const VideoCardMenu = ({ item }) => {
     const { token } = useAuth();
     const [showVideoMenuContent, setShowVideoMenuContent] = useState(false);
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+    const [open, setOpen] = useState(false);
+    const container = useRef();
 
     const findExistsOrNot = (state, value) => {
         return state.find(video => video._id === value) ? true : false
     }
 
+    const handleButtonClick = () => {
+        setOpen((prev) => !prev);
+    };
+
+    const handleClickOutside = (e) => {
+        if (container?.current && !container?.current?.contains(e.target)) {
+            setOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+    }, []);
+
     return (
-        <>
-            <button onClick={(e) => {
-                setShowVideoMenuContent(!showVideoMenuContent)
-            }} className="fa-solid fa-ellipsis-vertical btn-sm" >
+        <div className="container" ref={container}>
+            <button  onClick={handleButtonClick} className="fa-solid fa-ellipsis-vertical btn-sm " >
             </button>
-            {showVideoMenuContent && (
+            {open && (
                 <div className="toggle-video-menu">
                     {findExistsOrNot(userDataState.liked, item._id) ?
                         <div
@@ -96,6 +110,6 @@ export const VideoCardMenu = ({ item }) => {
                     newVideo={item}
                 />
             )}
-        </>
+        </div>
     );
 };

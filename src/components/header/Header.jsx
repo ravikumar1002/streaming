@@ -1,10 +1,27 @@
 import "./header.css"
-import { Link, useLocation, NavLink } from "react-router-dom"
+import { Link, useLocation, NavLink, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/auth-context";
+import { useState, useEffect, useRef } from "react";
 
 export const Header = () => {
     const location = useLocation()
-    const { token } = useAuth()
+    const { token , logout} = useAuth()
+    const [open, setOpen] = useState(false);
+    const container = useRef();
+    const navigate = useNavigate()
+    const handleButtonClick = () => {
+        setOpen((prev) => !prev);
+    };
+
+    const handleClickOutside = (e) => {
+        if (container?.current && !container?.current?.contains(e.target)) {
+            setOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+    }, []);
 
     return (
         <header className="flex-space-around p-2 nav-bg-primary">
@@ -29,20 +46,23 @@ export const Header = () => {
                 </span>
 
             </div>
-            <nav >
+            <nav  className="container" ref={container}>
                 <ul className="horizontal-align-centre nav-text-primary">
                     <li className="list-style-none">
                         {token ?
-                            <button>
-                                <Link
-                                    to="profile"
+                            // <button>
+                                <button
                                     className="inline-centre nav-text-primary btn-icon-text-left btn-sm nav-btn-primary"
+                                    onClick={() => {
+                                        // setShowProfileState(!showProfileState)
+                                        handleButtonClick()
+                                    }}
                                 >
                                     <span className="badge-container">
                                         <i className="fas fa-user fs-md"></i>
                                     </span>
-                                </Link>
-                            </button>
+                                </button>
+                            // </button>
                             :
                             <button>
                                 <Link
@@ -58,6 +78,17 @@ export const Header = () => {
                         }
                     </li>
                 </ul>
+                {open && <div className="user-profile-buttons">
+                     <ul>
+                         <li className="list-style-none">
+                             <button className="btn btn-sm btn-block" onClick={() => {
+                                 logout()
+                                 handleButtonClick()
+                                 navigate("/videos")
+                             }}>Logout</button>
+                         </li>
+                     </ul>
+                    </div>}
             </nav>
         </header>
     );

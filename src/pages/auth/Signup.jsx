@@ -6,6 +6,7 @@ import { useAuth } from "../../context/auth-context";
 export const SignUp = () => {
     const location = useLocation();
     const { userSignUp, user } = useAuth();
+    const [errorPassword, setErrorPassword] = useState(false)
     const [showPassWord, setShowPassword] = useState({
         password: false,
         confirmPassword: false,
@@ -18,7 +19,7 @@ export const SignUp = () => {
         name: "",
     }
 
-    const [signupDetail, setSignupDetail] = useState({...emptyField});
+    const [signupDetail, setSignupDetail] = useState({ ...emptyField });
 
     const setValue = (key, value) => {
         setSignupDetail((prev) => {
@@ -34,6 +35,18 @@ export const SignUp = () => {
         e.stopPropagation();
         setShowPassword((prev) => ({ ...prev, [passwordType]: value }));
     };
+
+    const matchpassword = () => {
+        if (signupDetail.confirmPassword.length > 0) {
+            signupDetail.password !== signupDetail.confirmPassword ? setErrorPassword(true) : setErrorPassword(false)
+        } else {
+            setErrorPassword(false)
+        }
+    }
+
+    useEffect(() => {
+        matchpassword()
+    }, [signupDetail.confirmPassword])
 
     return (
         <div>
@@ -103,7 +116,7 @@ export const SignUp = () => {
                                 )}
                             </label>
                             <input
-                               type={showPassWord.password ? "text" : "password"}
+                                type={showPassWord.password ? "text" : "password"}
                                 id="password"
                                 className="fs-sm input-padding"
                                 required
@@ -114,11 +127,10 @@ export const SignUp = () => {
                                 }}
                             />
                         </div>
-                        <div className="flex-col">
+                        <div className={`flex-col ${errorPassword && "input-err"}`}>
                             <label
                                 htmlFor="confirm-password"
                                 className="flex-between"
-                                onClick={() => console.log("s")}
                             >
                                 <span>
                                     Confirm Password <span className="require-star">*</span>
@@ -140,20 +152,19 @@ export const SignUp = () => {
                             <input
                                 type={showPassWord.confirmPassword ? "text" : "password"}
                                 id="confirm-password"
-                                className="fs-sm input-padding"
+                                className={`fs-sm input-padding ${errorPassword && "errorFiled"}`}
                                 value={signupDetail.confirmPassword}
                                 required
                                 autoComplete="off"
                                 onChange={(e) => {
-                                    console.log(e.target.value)
                                     setValue("confirmPassword", e.target.value);
                                 }}
                             />
+                            {errorPassword && <div className="error-msg"> password doesn't match</div>}
                         </div>
                         <div className="flex-space-between p-0">
                             <span>
                                 <label htmlFor="remember-me">
-
                                     <input
                                         type="checkbox"
                                         id="remember-me"

@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const setPath = (path) => {
-        if (path?.state === null) {
+        if (!path?.state?.from) {
             if(path.state){
             navigate(path?.state)
             }else{
@@ -53,11 +53,12 @@ const AuthProvider = ({ children }) => {
         setPath(path)
     }
 
-    const removeData = () => {
+    const logout = () => {
         setUser({
             encodedToken: '',
             userData: {}
         })
+        localStorage.clear()
     }
 
     const getLocalData = async (path) => {
@@ -76,7 +77,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
 
-    return <authContext.Provider value={{ userSignUp, userlogin, user, token: user?.encodedToken }}>
+    return <authContext.Provider value={{ userSignUp,logout, userlogin, user, token: user?.encodedToken }}>
         {children}
     </authContext.Provider>
 }
