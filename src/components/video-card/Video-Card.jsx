@@ -1,5 +1,5 @@
 import { VideoCardImg, VideoCardMenu, VideoCardContent, VideoCardFooter } from "./index"
-import { Link, useParams} from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./video-card.css"
 export const VideoCard = ({ video }) => {
     return (
@@ -17,8 +17,8 @@ export const VideoCard = ({ video }) => {
                     </div>
                 </div>
             </Link>
-            <div style={{ position: "absolute", top: "75%", right: "1%", zIndex: "2" }}>
-                <VideoCardMenu item={video} />
+            <div style={{ position: "absolute", top: "75%", right: "1%"}}>
+                        <VideoCardMenu item={video} />
             </div>
         </div>
     )

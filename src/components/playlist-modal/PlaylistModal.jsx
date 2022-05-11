@@ -1,5 +1,5 @@
 import "./playlist-modal.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { postPlaylist, postVideoInPlaylist } from "../../api-calls";
 import { useAuth } from "../../context/auth-context";
 import { useUserData } from "../../context/user-data-context";
@@ -11,7 +11,6 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
     });
     const { token } = useAuth()
     const { userDataState, userDataDispatch } = useUserData()
-
     const createNewPlayList = async (nameOfPlaylist, authToken) => {
         const getNewPlaylist = await postPlaylist(nameOfPlaylist, authToken)
         userDataDispatch({
@@ -27,11 +26,14 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
     };
 
 
-
     return (
-        <div className={`${showModal ? "playlist-modal-wrapper" : "d-none"}`}>
-            <div className="playlist-modal">
-                <div>
+        <div className={`${showModal ? "playlist-modal-wrapper" : "d-none"}`} onClick={(e) => {
+            e.stopPropagation()
+            hideModal(false);
+            console.log("c")
+        }}>
+           <div className="playlist-modal" >
+                 <div>
                     <div className="playlist-modal-heading p-1">
                         <span>Save To...</span>
                         <span
@@ -48,14 +50,15 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
                         return <li className="playlists-in-modal" key={list._id} onClick={() => {
                             addNewVideoInPlayList(list._id, newVideo, token)
                             hideModal(false);
-
                         }}>
-                            <label htmlFor={`playlist-checkbox${list._id}`} className="d-flex"><input type="checkbox" id={`playlist-checkbox${list._id}`} /><span>{list.title}</span></label>
+                            <label htmlFor={`playlist-checkbox${list._id}`} className="d-flex"><input type="checkbox" checked= {checkAlreadyExitsOrNot(newVideo)} id={`playlist-checkbox${list._id}`} /><span>{list.title}</span></label>
                         </li>;
                     })}
                 </ul>
                 {showNewPlaylistForm ? (
-                    <div className="new-playlist-create flex-col p-1 ">
+                    <div className="new-playlist-create flex-col p-1" onClick={(e) => {
+                         e.stopPropagation()   
+                    }}>
                         <h4 className="py-1">Name</h4>
                         <input
                             type="text"
@@ -82,7 +85,8 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
                     </div>
                 ) : <div className="new-playlist  p-1">
                     <button
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.stopPropagation()
                             setShowNewPlaylistForm(true);
                         }}
                     >

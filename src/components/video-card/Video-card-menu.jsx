@@ -33,7 +33,10 @@ export const VideoCardMenu = ({ item }) => {
 
     return (
         <div className="container" ref={container}>
-            <button  onClick={handleButtonClick} className="fa-solid fa-ellipsis-vertical btn-sm " >
+            <button  onClick={(e) => {
+                e.stopPropagation()
+                handleButtonClick()
+                }} className="fa-solid fa-ellipsis-vertical btn-sm " >
             </button>
             {open && (
                 <div className="toggle-video-menu">
@@ -54,7 +57,7 @@ export const VideoCardMenu = ({ item }) => {
                             onClick={() => {
                                 if (token) {
                                     addVideoInLiked(token, item, userDataDispatch);
-                                    setShowVideoMenuContent(false);
+                                    setOpen(false);
                                 } else {
                                     alert("login first");
                                 }
@@ -79,7 +82,7 @@ export const VideoCardMenu = ({ item }) => {
                             onClick={() => {
                                 if (token) {
                                     addVideoInWatchLater(token, item, userDataDispatch);
-                                    setShowVideoMenuContent(false);
+                                    setOpen(false);
                                 } else {
                                     alert("login first");
                                 }
@@ -93,7 +96,7 @@ export const VideoCardMenu = ({ item }) => {
                         onClick={() => {
                             if (token) {
                                 setShowPlaylistModal(true);
-                                setShowVideoMenuContent(false);
+                                setOpen(false);
                             } else {
                                 alert("login first")
                             }
