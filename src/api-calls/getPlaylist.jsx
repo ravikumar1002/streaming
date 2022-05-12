@@ -42,6 +42,7 @@ export const postPlaylist = async (playlistItem, authToken) => {
 
 
 export const postVideoInPlaylist = async (playlistId, videoForAdd, authToken) => {
+    console.log(playlistId, videoForAdd, authToken, "cccc")
     try {
         const response = await axios.post(`/api/user/playlists/${playlistId}`, {
             video: videoForAdd

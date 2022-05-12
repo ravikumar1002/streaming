@@ -1,4 +1,4 @@
-import {postWatchLaterVideo, deleteWatchLaterVideo, postLiked, deleteLiked, postVideoInPlaylist, postPlaylist, deleteVideoFromPlaylist} from "./api-calls"
+import {postWatchLaterVideo, deleteWatchLaterVideo, postLiked, deleteLiked, postVideoInPlaylist, postPlaylist, deleteVideoFromPlaylist, getPlaylist, deletePlaylist} from "./api-calls"
 import { useUserData } from "./context/user-data-context";
 
 
@@ -70,6 +70,7 @@ const addNewVideoInPlayList = async (playlistId, videoForAdd, authToken,userData
       videoForAdd,
       authToken
   );
+  console.log(getNewVideoInPlaylist)
   const updatedValue = userDataState.playlist.map((playlistVideo) =>
       playlistVideo.title === getNewVideoInPlaylist.title
           ? getNewVideoInPlaylist
@@ -97,5 +98,25 @@ const deleteVideoInPLaylist = async (playlistId, videoId, authToken, userDataSta
   })
 }
 
+const getAllPlaylistFromServer = async (token, userDataDispatch) => {
+  const playlistData = await getPlaylist(token)
+  userDataDispatch({
+      type: "USER_ALL_PLAYLIST",
+      payload: {
+          playlistVideoData: playlistData.playlists
+      }
+  })
+}
 
-export {addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked, createNewPlayList, addNewVideoInPlayList, deleteVideoInPLaylist}
+const deletePlaylistFromServer = async (playlistId, authToken, userDataDispatch) => {
+  const getdeletedPlaylist = await deletePlaylist(playlistId, authToken)
+  userDataDispatch({
+      type: "USER_ALL_PLAYLIST",
+      payload: {
+          playlistVideoData: getdeletedPlaylist.playlists
+      }
+  })
+}
+
+
+export {addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked, createNewPlayList, addNewVideoInPlayList, deleteVideoInPLaylist, getAllPlaylistFromServer, deletePlaylistFromServer}
