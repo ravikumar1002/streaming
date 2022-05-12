@@ -1,4 +1,4 @@
-import {postWatchLaterVideo, deleteWatchLaterVideo, postLiked, deleteLiked} from "./api-calls"
+import {postWatchLaterVideo, deleteWatchLaterVideo, postLiked, deleteLiked, postVideoInPlaylist, postPlaylist, deleteVideoFromPlaylist} from "./api-calls"
 import { useUserData } from "./context/user-data-context";
 
 
@@ -54,5 +54,48 @@ const deleteVideoFromLiked = async (authToken, likedVideosId, userDataDispatch) 
   });
 };
 
+const createNewPlayList = async (nameOfPlaylist, authToken, userDataDispatch) => {
+  const getNewPlaylist = await postPlaylist(nameOfPlaylist, authToken);
+  userDataDispatch({
+      type: "USER_ALL_PLAYLIST",
+      payload: {
+          playlistVideoData: getNewPlaylist.playlists,
+      },
+  });
+};
 
-export {addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked}
+const addNewVideoInPlayList = async (playlistId, videoForAdd, authToken,userDataState, userDataDispatch ) => {
+  const getNewVideoInPlaylist = await postVideoInPlaylist(
+      playlistId,
+      videoForAdd,
+      authToken
+  );
+  const updatedValue = userDataState.playlist.map((playlistVideo) =>
+      playlistVideo.title === getNewVideoInPlaylist.title
+          ? getNewVideoInPlaylist
+          : playlistVideo
+  );
+  userDataDispatch({
+      type: "USER_ALL_PLAYLIST",
+      payload: {
+          playlistVideoData: updatedValue,
+      },
+  });
+};
+
+const deleteVideoInPLaylist = async (playlistId, videoId, authToken, userDataState, userDataDispatch) => {
+  const deletedVideoPlaylist = await deleteVideoFromPlaylist(playlistId, videoId, authToken)
+  const playlistDataAfterDeleted = userDataState.playlist.reduce((prev, curr) =>
+      curr._id === deletedVideoPlaylist.playlist._id
+          ? [...prev, deletedVideoPlaylist.playlist]
+          : [...prev, curr], [])
+  userDataDispatch({
+      type: "USER_ALL_PLAYLIST",
+      payload: {
+          playlistVideoData: playlistDataAfterDeleted
+      }
+  })
+}
+
+
+export {addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked, createNewPlayList, addNewVideoInPlayList, deleteVideoInPLaylist}
