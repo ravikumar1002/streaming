@@ -7,10 +7,11 @@ const VideoProvider = ({ children }) => {
     const videoReducerInitialState = {
         allVideos: []
     }
+
     const [videoState, videoDispatch] = useReducer(videoReducer, videoReducerInitialState)
 
     return (
-        <videoContext.Provider value={{ videoState, videoDispatch }}>
+        <videoContext.Provider value={{ videoState, videoDispatch}}>
             {children}
         </videoContext.Provider>
     )

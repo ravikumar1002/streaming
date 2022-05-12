@@ -11,6 +11,7 @@
   align-items: center;
   flex-direction: column;
   cursor: auto;
+  background-color: rgba(111, 111, 111, 0.822);
 }
 
 .playlist-modal {
@@ -26,7 +27,7 @@
 
 .playlists-in-modal {
   list-style: none;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   font-weight: 600;
   display: flex;
   align-content: center;

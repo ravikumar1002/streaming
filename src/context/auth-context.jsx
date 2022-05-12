@@ -9,40 +9,75 @@ const AuthProvider = ({ children }) => {
         encodedToken: '',
         userData: {}
     })
-    // const location = useLocation()
-    const navigate = useNavigate()
 
-    const localStrogeItem = JSON.parse(localStorage.getItem("userHasLogged"))
-    
-    const userSignUp = async ({ email, password}, location) => {
-        console.log(email, password ,location)
-        const data = await signupHandler(email, password)
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const setLocalStroge = (data) => {
         localStorage.setItem(
             'userHasLogged',
             JSON.stringify({ token: data?.encodedToken, user: data?.createdUser })
         );
-        setUser({
-            encodedToken: data?.encodedToken,
-            userData : data?.createdUser
-        })
-        navigate(location?.state?.from?.pathname)
     }
 
-    const userlogin = async({ email, password},location) => {
+    const setData = (data) => {
+        setUser({
+            encodedToken: data?.encodedToken,
+            userData: data?.createdUser
+        })
+    }
+
+    const setPath = (path) => {
+        if (!path?.state?.from) {
+            if(path.state){
+            navigate(path?.state)
+            }else{
+            navigate(path?.pathname)
+            }
+        } else {
+            navigate(path?.state?.from?.pathname)
+        }
+    }
+
+    const userSignUp = async ({ email, password }, path) => {
+        const data = await signupHandler(email, password)
+        setLocalStroge(data)
+        setData(data)
+        setPath(path)
+    }
+
+    const userlogin = async ({ email, password }, path) => {
         const data = await loginHandler(email, password)
-        console.log(data)
-        localStorage.setItem(
-            'userHasLogged',
-            JSON.stringify(data)
-        );
-        setUser({
-            encodedToken: data?.encodedToken,
-            userData : data?.foundUser
-        })
-        navigate(location?.state?.from?.pathname)
+        setLocalStroge(data)
+        setData(data)
+        setPath(path)
     }
 
-    return <authContext.Provider value={{ userSignUp, userlogin, user, token: user?.encodedToken }}>
+    const logout = () => {
+        setUser({
+            encodedToken: '',
+            userData: {}
+        })
+        localStorage.clear()
+    }
+
+    const getLocalData = async (path) => {
+        const localStrogeItem = await { ...JSON.parse(localStorage.getItem("userHasLogged")).user }
+        await userSignUp({
+            email: localStrogeItem.email,
+            password: localStrogeItem.password,
+            name: localStrogeItem.name
+        }, path)
+    }
+
+    useEffect(() => {
+        if ((JSON.parse(localStorage.getItem("userHasLogged"))?.token) && (!user.encodedToken)) {
+            getLocalData(location)
+        }
+    }, [])
+
+
+    return <authContext.Provider value={{ userSignUp,logout, userlogin, user, token: user?.encodedToken }}>
         {children}
     </authContext.Provider>
 }

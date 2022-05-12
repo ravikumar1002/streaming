@@ -39,6 +39,26 @@
   margin: 0 4rem;
 }
 
+.user-profile-buttons{
+  position: absolute;
+  width: 10rem;
+  right: 2%;
+  margin: 0.5rem;
+}
+
+.user-profile-buttons li {
+  background: rgb(23, 72, 162);
+}
+
+.user-profile-buttons li button {
+  color: rgb(255, 255, 255);
+}
+
+
+.user-profile-buttons li:hover{
+  background: rgb(48, 101, 199);
+}
+
 @media screen and (max-width: 730px) {
   .search-bar {
     order: 2;

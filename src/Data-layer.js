@@ -15,6 +15,8 @@ const DataLayer = ({ children }) => {
     });
   };
 
+  
+
   useEffect(() => {
     getVideosFromServer();
   }, []);

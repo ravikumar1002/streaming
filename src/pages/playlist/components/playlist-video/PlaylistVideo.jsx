@@ -1,27 +1,16 @@
 import { useUserData } from "../../../../context/user-data-context"
-import { deleteVideoFromPlaylist } from "../../../../api-calls"
+import { deleteVideoInPLaylist } from "../../../../services"
 import { useAuth } from "../../../../context/auth-context"
 import "./playlist-video.css"
+import { Link } from "react-router-dom"
 export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
     const { userDataState, userDataDispatch } = useUserData()
     const { token } = useAuth()
 
-    const deleteVideoInPLaylist = async (playlistId, videoId, authToken) => {
-        const deletedVideoPlaylist = await deleteVideoFromPlaylist(playlistId, videoId, authToken)
-        const playlistDataAfterDeleted = userDataState.playlist.reduce((prev, curr) =>
-            curr._id === deletedVideoPlaylist.playlist._id
-                ? [...prev, deletedVideoPlaylist.playlist]
-                : [...prev, curr], [])
-        userDataDispatch({
-            type: "USER_ALL_PLAYLIST",
-            payload: {
-                playlistVideoData: playlistDataAfterDeleted
-            }
-        })
-    }
-
+ 
     return (
         <div className="playlist-video">
+            <Link to= {`/videos/${video._id}`} className="video-card-link">
             <div className="playlist-video-img">
                 <img src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`} alt={video.title} />
             </div>
@@ -29,9 +18,10 @@ export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
                 <h3>{video.title}</h3>
                 <p>{video.description}</p>
             </div>
+            </Link>
             <div className="playlist-video-icon">
                 <span className="fa fa-trash" onClick={() => {
-                    deleteVideoInPLaylist(playlistIdForVideo, video._id, token)
+                    deleteVideoInPLaylist(playlistIdForVideo, video._id, token,userDataState, userDataDispatch)
                 }}></span>
             </div>
         </div>

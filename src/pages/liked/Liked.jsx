@@ -21,8 +21,6 @@ export const Liked = () => {
         getAllLikedVideos(token)
     }, [])
 
-    console.log(userDataState)
-
     return (
         <div>
             {userDataState.liked.length > 0 ? userDataState.liked.map((video) => {

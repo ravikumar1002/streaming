@@ -17,6 +17,7 @@ import DataLayer from "./Data-layer";
 import { AsideBar, Header } from "./components/index";
 import { RequiresAuth } from "./pages/auth/components/RequiresAuth";
 import Mockman from "mockman-js";
+
 function App() {
   return (
     <div className="App">
