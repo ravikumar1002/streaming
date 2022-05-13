@@ -20,6 +20,12 @@ const userDataReducer = (state, action) => {
                 ...state,
                 liked: action.payload.likedVideos
             }
+        
+            case "HISTORY_VIDEOS":
+                return {
+                    ...state,
+                    history: action.payload.historyVideoData
+                }
     }
 }
 

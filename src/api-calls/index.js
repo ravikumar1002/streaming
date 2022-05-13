@@ -13,3 +13,9 @@ export {
   deleteWatchLaterVideo,
 } from "./getWatchLater";
 export { getLiked, postLiked, deleteLiked } from "./getLiked";
+export {
+  getHistory,
+  postHistory,
+  deleteHistory,
+  deleteAllHistory,
+} from "./getHistory";

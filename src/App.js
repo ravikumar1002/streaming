@@ -11,6 +11,7 @@ import {
   SingleVideoPage,
   WatchLater,
   Liked,
+  History,
 } from "./pages/index";
 import { Routes, Route, Link } from "react-router-dom";
 import DataLayer from "./Data-layer";
@@ -66,6 +67,14 @@ function App() {
                 element={
                   <RequiresAuth>
                     < WatchLater/>
+                  </RequiresAuth>
+                }
+              />
+              <Route
+                path="/history"
+                element={
+                  <RequiresAuth>
+                    <History />
                   </RequiresAuth>
                 }
               />

@@ -1,7 +1,14 @@
 import { VideoCardImg, VideoCardMenu, VideoCardContent, VideoCardFooter } from "./index"
+import { deleteHistoryFromServer } from "../../services"
+import { useAuth } from "../../context/auth-context"
+import { useUserData } from "../../context/user-data-context"
 import { Link } from "react-router-dom"
 import "./video-card.css"
-export const VideoCard = ({ video }) => {
+export const VideoCard = ({ video, history }) => {
+    const { token } = useAuth()
+
+    const { userDataState, userDataDispatch } = useUserData()
+
     return (
         <div className="video-card" style={{ position: "relative" }}>
             <Link to={`/videos/${video._id}`} className="video-card-link">
@@ -20,6 +27,16 @@ export const VideoCard = ({ video }) => {
             <div style={{ position: "absolute", top: "75%", right: "1%"}}>
                         <VideoCardMenu item={video} />
             </div>
+            {
+                history &&  <div style={{ position: "absolute", top: "5%", right: "1%"}}>
+                    <button className="btn-sm border-round btn-primary" onClick={() => {
+                        console.log("his")
+                        deleteHistoryFromServer(video._id, token , userDataDispatch)
+                    }}> + </button>
+            </div>
+
+            }
+                
         </div>
     )
 }
