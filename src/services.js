@@ -1,8 +1,25 @@
-import {postWatchLaterVideo, deleteWatchLaterVideo, postLiked, deleteLiked, postVideoInPlaylist, postPlaylist, deleteVideoFromPlaylist, getPlaylist, deletePlaylist} from "./api-calls"
+import {
+  postWatchLaterVideo,
+  deleteWatchLaterVideo,
+  postLiked,
+  deleteLiked,
+  postVideoInPlaylist,
+  postPlaylist,
+  deleteVideoFromPlaylist,
+  getPlaylist,
+  deletePlaylist,
+  getHistory,
+  postHistory,
+  deleteHistory,
+  deleteAllHistory,
+} from "./api-calls";
 import { useUserData } from "./context/user-data-context";
 
-
-const addVideoInWatchLater = async (authToken, watchLatervideo, userDataDispatch) => {
+const addVideoInWatchLater = async (
+  authToken,
+  watchLatervideo,
+  userDataDispatch
+) => {
   const saveWatchLaterVideoInServer = await postWatchLaterVideo(
     authToken,
     watchLatervideo
@@ -15,24 +32,25 @@ const addVideoInWatchLater = async (authToken, watchLatervideo, userDataDispatch
   });
 };
 
-const deleteVideoFromWatchLater = async (authToken, watchLatervideoId, userDataDispatch) => {
-    const deleteWatchLaterVideoInServer = await deleteWatchLaterVideo(
-        authToken,
-        watchLatervideoId
-    );
-    userDataDispatch({
-        type: "WATCH_LATER_VIDEOS",
-        payload: {
-            watchLaterVideos: deleteWatchLaterVideoInServer.watchlater
-        }
-    })
+const deleteVideoFromWatchLater = async (
+  authToken,
+  watchLatervideoId,
+  userDataDispatch
+) => {
+  const deleteWatchLaterVideoInServer = await deleteWatchLaterVideo(
+    authToken,
+    watchLatervideoId
+  );
+  userDataDispatch({
+    type: "WATCH_LATER_VIDEOS",
+    payload: {
+      watchLaterVideos: deleteWatchLaterVideoInServer.watchlater,
+    },
+  });
 };
 
 const addVideoInLiked = async (authToken, likedVideos, userDataDispatch) => {
-  const saveLikedVideoInServer = await postLiked(
-    likedVideos,
-    authToken
-  );
+  const saveLikedVideoInServer = await postLiked(likedVideos, authToken);
   userDataDispatch({
     type: "LIKED_VIDEOS",
     payload: {
@@ -41,11 +59,12 @@ const addVideoInLiked = async (authToken, likedVideos, userDataDispatch) => {
   });
 };
 
-const deleteVideoFromLiked = async (authToken, likedVideosId, userDataDispatch) => {
-  const deleteLikedVideoInServer = await deleteLiked(
-      likedVideosId,
-      authToken
-  );
+const deleteVideoFromLiked = async (
+  authToken,
+  likedVideosId,
+  userDataDispatch
+) => {
+  const deleteLikedVideoInServer = await deleteLiked(likedVideosId, authToken);
   userDataDispatch({
     type: "LIKED_VIDEOS",
     payload: {
@@ -54,69 +73,161 @@ const deleteVideoFromLiked = async (authToken, likedVideosId, userDataDispatch) 
   });
 };
 
-const createNewPlayList = async (nameOfPlaylist, authToken, userDataDispatch) => {
+const createNewPlayList = async (
+  nameOfPlaylist,
+  authToken,
+  userDataDispatch
+) => {
   const getNewPlaylist = await postPlaylist(nameOfPlaylist, authToken);
   userDataDispatch({
-      type: "USER_ALL_PLAYLIST",
-      payload: {
-          playlistVideoData: getNewPlaylist.playlists,
-      },
+    type: "USER_ALL_PLAYLIST",
+    payload: {
+      playlistVideoData: getNewPlaylist.playlists,
+    },
   });
 };
 
-const addNewVideoInPlayList = async (playlistId, videoForAdd, authToken,userDataState, userDataDispatch ) => {
+const addNewVideoInPlayList = async (
+  playlistId,
+  videoForAdd,
+  authToken,
+  userDataState,
+  userDataDispatch
+) => {
   const getNewVideoInPlaylist = await postVideoInPlaylist(
-      playlistId,
-      videoForAdd,
-      authToken
+    playlistId,
+    videoForAdd,
+    authToken
   );
-  console.log(getNewVideoInPlaylist)
+  console.log(getNewVideoInPlaylist);
   const updatedValue = userDataState.playlist.map((playlistVideo) =>
-      playlistVideo.title === getNewVideoInPlaylist.title
-          ? getNewVideoInPlaylist
-          : playlistVideo
+    playlistVideo.title === getNewVideoInPlaylist.title
+      ? getNewVideoInPlaylist
+      : playlistVideo
   );
   userDataDispatch({
-      type: "USER_ALL_PLAYLIST",
-      payload: {
-          playlistVideoData: updatedValue,
-      },
+    type: "USER_ALL_PLAYLIST",
+    payload: {
+      playlistVideoData: updatedValue,
+    },
   });
 };
 
-const deleteVideoInPLaylist = async (playlistId, videoId, authToken, userDataState, userDataDispatch) => {
-  const deletedVideoPlaylist = await deleteVideoFromPlaylist(playlistId, videoId, authToken)
-  const playlistDataAfterDeleted = userDataState.playlist.reduce((prev, curr) =>
+const deleteVideoInPLaylist = async (
+  playlistId,
+  videoId,
+  authToken,
+  userDataState,
+  userDataDispatch
+) => {
+  const deletedVideoPlaylist = await deleteVideoFromPlaylist(
+    playlistId,
+    videoId,
+    authToken
+  );
+  const playlistDataAfterDeleted = userDataState.playlist.reduce(
+    (prev, curr) =>
       curr._id === deletedVideoPlaylist.playlist._id
-          ? [...prev, deletedVideoPlaylist.playlist]
-          : [...prev, curr], [])
+        ? [...prev, deletedVideoPlaylist.playlist]
+        : [...prev, curr],
+    []
+  );
   userDataDispatch({
-      type: "USER_ALL_PLAYLIST",
-      payload: {
-          playlistVideoData: playlistDataAfterDeleted
-      }
-  })
-}
+    type: "USER_ALL_PLAYLIST",
+    payload: {
+      playlistVideoData: playlistDataAfterDeleted,
+    },
+  });
+};
 
 const getAllPlaylistFromServer = async (token, userDataDispatch) => {
-  const playlistData = await getPlaylist(token)
+  const playlistData = await getPlaylist(token);
   userDataDispatch({
-      type: "USER_ALL_PLAYLIST",
-      payload: {
-          playlistVideoData: playlistData.playlists
-      }
-  })
-}
+    type: "USER_ALL_PLAYLIST",
+    payload: {
+      playlistVideoData: playlistData.playlists,
+    },
+  });
+};
 
-const deletePlaylistFromServer = async (playlistId, authToken, userDataDispatch) => {
-  const getdeletedPlaylist = await deletePlaylist(playlistId, authToken)
+const deletePlaylistFromServer = async (
+  playlistId,
+  authToken,
+  userDataDispatch
+) => {
+  const getdeletedPlaylist = await deletePlaylist(playlistId, authToken);
   userDataDispatch({
-      type: "USER_ALL_PLAYLIST",
-      payload: {
-          playlistVideoData: getdeletedPlaylist.playlists
-      }
-  })
-}
+    type: "USER_ALL_PLAYLIST",
+    payload: {
+      playlistVideoData: getdeletedPlaylist.playlists,
+    },
+  });
+};
+
+const getAllVideoHistory = async (authToken, userDataDispatch) => {
+  const saveHistoryVideoInServer = await getHistory(authToken);
+  userDataDispatch({
+    type: "HISTORY_VIDEOS",
+    payload: {
+      historyVideoData: saveHistoryVideoInServer.history,
+    },
+  });
+};
+
+const addVideoInHistory = async (historyVideo, authToken, userDataDispatch) => {
+  const saveHistoryVideoInServer = await postHistory(historyVideo, authToken);
+  console.log(saveHistoryVideoInServer)
+  userDataDispatch({
+    type: "HISTORY_VIDEOS",
+    payload: {
+      historyVideoData: saveHistoryVideoInServer.history,
+    },
+  });
+};
 
 
-export {addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked, createNewPlayList, addNewVideoInPlayList, deleteVideoInPLaylist, getAllPlaylistFromServer, deletePlaylistFromServer}
+const deleteHistoryFromServer = async (
+  historyId,
+  authToken,
+  userDataDispatch
+) => {
+  const getdeletedHistory = await deleteHistory(historyId, authToken);
+  userDataDispatch({
+    type: "HISTORY_VIDEOS",
+    payload: {
+      historyVideoData: getdeletedHistory.history,
+    },
+  });
+};
+
+
+const deleteAllHistoryFromServer = async (
+  authToken,
+  userDataDispatch
+) => {
+  const getdeletedAllHistory = await deleteAllHistory(authToken);
+  userDataDispatch({
+    type: "HISTORY_VIDEOS",
+    payload: {
+      historyVideoData: getdeletedAllHistory.history,
+    },
+  });
+};
+
+
+
+export {
+  addVideoInWatchLater,
+  deleteVideoFromWatchLater,
+  addVideoInLiked,
+  deleteVideoFromLiked,
+  createNewPlayList,
+  addNewVideoInPlayList,
+  deleteVideoInPLaylist,
+  getAllPlaylistFromServer,
+  deletePlaylistFromServer,
+  getAllVideoHistory,
+  addVideoInHistory,
+  deleteHistoryFromServer,
+  deleteAllHistoryFromServer
+};

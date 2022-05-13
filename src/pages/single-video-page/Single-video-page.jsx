@@ -15,7 +15,7 @@ export const SingleVideoPage = () => {
             {
                 videoState.allVideos.length > 0 ? <div>
                     <div className='single-video-player'>
-                        <VideoPlayer videoId={currentVideo._id} />
+                        <VideoPlayer video={currentVideo} />
                         <VideoPlayerFooter currentVideo={currentVideo} />
                     </div>
                     <div>
