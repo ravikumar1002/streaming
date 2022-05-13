@@ -21,7 +21,7 @@ export const History = () => {
                 <div>
                     <button onClick={() => {
                         deleteAllHistoryFromServer(token, userDataDispatch)
-                    }} className= "btn btn-primary btn-sm border-squre">Clear History</button>
+                    }} className= "btn btn-danger btn-sm border-squre">Clear History</button>
                 </div>
             </div>
             <div className="p-2 d-flex gap-2" >

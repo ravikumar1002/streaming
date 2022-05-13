@@ -29,10 +29,10 @@ export const VideoCard = ({ video, history }) => {
             </div>
             {
                 history &&  <div style={{ position: "absolute", top: "5%", right: "1%"}}>
-                    <button className="btn-sm border-round btn-primary" onClick={() => {
+                    <button className="btn-sm btn-danger border-squre" onClick={() => {
                         console.log("his")
                         deleteHistoryFromServer(video._id, token , userDataDispatch)
-                    }}> + </button>
+                    }}> <i class="fa fa-times"></i></button>
             </div>
 
             }
