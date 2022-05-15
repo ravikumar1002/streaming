@@ -24,7 +24,7 @@ export const Header = () => {
     }, []);
 
     return (
-        <header className="flex-space-around p-2 nav-bg-primary">
+        <header className="flex-space-around p-2 header">
             <div className="inline-centre">
                 <button className="open-menu">
                     <i className="fa fa-bars"></i>

@@ -10,7 +10,7 @@ export const VideoCard = ({ video, history }) => {
     const { userDataState, userDataDispatch } = useUserData()
 
     return (
-        <div className="video-card" style={{ position: "relative" }}>
+        <div className="video-card">
             <Link to={`/videos/${video._id}`} className="video-card-link">
                 <div className="video-card-img">
                     <VideoCardImg id={video._id} title={video.title} />

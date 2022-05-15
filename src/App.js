@@ -26,11 +26,11 @@ function App() {
         <div className="header-wrapper">
           <Header />
         </div>
-        <div style={{ display: "flex" }}>
-          <div>
+        <div className="d-flex">
+          <div className= "aside-container">
             <AsideBar />
           </div>
-          <div className="w-100">
+          <div className="w-100" style={{background:"#fefefe"}}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/videos" element={<VideosListing />} />

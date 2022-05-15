@@ -5,5 +5,11 @@
   position: sticky;
   left: 0;
   z-index: 4;
-  background: var(--light-white-bg);
+  background: linear-gradient(63deg, #1c076ff2 2%, #07293ded 100%);
+}
+
+.aside-container {
+  height: 42.5rem;
+  position: sticky;
+  top: 4.5rem;
 }
