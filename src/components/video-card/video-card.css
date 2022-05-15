@@ -10,9 +10,11 @@
   gap: 1.5rem;
   position: relative;
   margin-right: 2rem;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.video-card-link{
+.video-card-link {
   text-decoration: none;
   color: rgb(20, 20, 20);
   border-radius: 5px;
