@@ -14,7 +14,6 @@ export const VideoPlayer = ({video}) => {
                 width="100%"
                 height="100%"
                 onStart={() => {
-                    console.log(video)
                     if (token) addVideoInHistory(video,token, userDataDispatch);
                   }}
             />

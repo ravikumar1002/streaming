@@ -45,7 +45,6 @@ export const postPlaylist = async (playlistItem, authToken) => {
 
 
 export const postVideoInPlaylist = async (playlistId, videoForAdd, authToken) => {
-    console.log(playlistId, videoForAdd, authToken, "cccc")
     try {
         const response = await axios.post(`/api/user/playlists/${playlistId}`, {
             video: videoForAdd
@@ -56,7 +55,7 @@ export const postVideoInPlaylist = async (playlistId, videoForAdd, authToken) =>
         );
 
         if (response.status === 200 || response.status === 201) {
-            toast.success("Added In Playlist")
+            toast.success("Video added In Playlist")
             return response.data
         }
     } catch (error) {
@@ -77,9 +76,11 @@ export const deletePlaylist = async (playlistId, authToken) => {
         );
 
         if (response.status === 200 || response.status === 201) {
+            toast.success("Playlist deleted")
             return response.data
         }
     } catch (error) {
+        toast.error("Something went wrong")
         console.log(error);
         throw error
     }
@@ -95,9 +96,11 @@ export const deleteVideoFromPlaylist = async (playlistId, videoId, authToken) =>
         );
 
         if (response.status === 200 || response.status === 201) {
+            toast.success("Video deleted from playlist")
             return response.data
         }
     } catch (error) {
+        toast.error("Something went wrong")
         console.log(error);
         throw error
     }

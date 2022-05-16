@@ -49,7 +49,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                     if (token) {
                                         deleteVideoFromLiked(token, item._id, userDataDispatch);
                                     } else {
-                                        toast.info("You Are Not logged in")
+                                        toast.error("You are not logged in")
                                     }
                                 }}
                             >
@@ -63,7 +63,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                         addVideoInLiked(token, item, userDataDispatch);
                                         setOpen(false);
                                     } else {
-                                        toast.info("You Are Not logged in")
+                                        toast.error("You are not logged in")
                                     }
                                 }}
                             >
@@ -90,7 +90,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                         addVideoInWatchLater(token, item, userDataDispatch);
                                         setOpen(false);
                                     } else {
-                                        toast.info("You Are Not logged in")
+                                        toast.error("You are not logged in")
                                     }
                                 }}
                             >
@@ -105,7 +105,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                     playlistState(true);
                                     setOpen(false);
                                 } else {
-                                    toast.info("You Are Not logged in")
+                                    toast.error("You are not logged in")
                                 }
                             }}
                         >

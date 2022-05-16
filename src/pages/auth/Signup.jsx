@@ -32,7 +32,6 @@ export const SignUp = () => {
     };
 
     const showPasswordFn = (e, passwordType, value) => {
-        console.log(e, passwordType, value)
         e.stopPropagation();
         setShowPassword((prev) => ({ ...prev, [passwordType]: value }));
     };

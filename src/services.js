@@ -99,7 +99,6 @@ const addNewVideoInPlayList = async (
     videoForAdd,
     authToken
   );
-  console.log(getNewVideoInPlaylist);
   const updatedValue = userDataState.playlist.map((playlistVideo) =>
     playlistVideo.title === getNewVideoInPlaylist.title
       ? getNewVideoInPlaylist
@@ -176,7 +175,6 @@ const getAllVideoHistory = async (authToken, userDataDispatch) => {
 
 const addVideoInHistory = async (historyVideo, authToken, userDataDispatch) => {
   const saveHistoryVideoInServer = await postHistory(historyVideo, authToken);
-  console.log(saveHistoryVideoInServer)
   userDataDispatch({
     type: "HISTORY_VIDEOS",
     payload: {

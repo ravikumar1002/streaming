@@ -60,7 +60,7 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
                                     className="playlists-in-modal"
                                     key={list._id}
                                     onClick={(e) => {
-    
+                                        e.preventDefault()
                                         if (checkAlreadyExitsOrNot(list, newVideo)) {
                                             deleteVideoInPLaylist(list._id, newVideo._id, token, userDataState, userDataDispatch)
                                             getAllPlaylistFromServer(token, userDataDispatch)
