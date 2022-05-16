@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export const getPlaylist = async (token) => {
     try {
@@ -31,9 +32,11 @@ export const postPlaylist = async (playlistItem, authToken) => {
         );
 
         if (response.status === 200 || response.status === 201) {
+            toast.success("Playlist successfully created")
             return response.data
         }
     } catch (error) {
+        toast.error("Something Went Wrong")
         console.log(error);
         throw error
     }
@@ -53,10 +56,12 @@ export const postVideoInPlaylist = async (playlistId, videoForAdd, authToken) =>
         );
 
         if (response.status === 200 || response.status === 201) {
+            toast.success("Added In Playlist")
             return response.data
         }
     } catch (error) {
         console.log(error);
+        toast.error("Something went wrong")
         throw error
     }
 };

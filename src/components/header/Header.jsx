@@ -2,6 +2,7 @@ import "./header.css"
 import { Link, useLocation, NavLink, useNavigate } from "react-router-dom"
 import { useAuth } from "../../context/auth-context";
 import { useState, useEffect, useRef } from "react";
+import { useUserData } from "../../context/user-data-context";
 
 export const Header = () => {
     const location = useLocation()
@@ -9,10 +10,16 @@ export const Header = () => {
     const [open, setOpen] = useState(false);
     const container = useRef();
     const navigate = useNavigate()
+    const {userDataState, userDataDispatch}  = useUserData()
     const handleButtonClick = () => {
         setOpen((prev) => !prev);
     };
-
+    const userIntialData = {
+        playlist: [],
+        history: [],
+        watchLater: [],
+        liked: [],
+    }
     const handleClickOutside = (e) => {
         if (container?.current && !container?.current?.contains(e.target)) {
             setOpen(false);
@@ -58,7 +65,7 @@ export const Header = () => {
                                         handleButtonClick()
                                     }}
                                 >
-                                    <span className="badge-container">
+                                    <span >
                                         <i className="fas fa-user fs-md"></i>
                                     </span>
                                 </button>
@@ -70,7 +77,7 @@ export const Header = () => {
                                     state={location?.pathname}
                                     className="nav-btn-primary nav-text-primary "
                                 >
-                                    <span className="btn btn-secondary btn-sm border-squre">
+                                    <span className="btn btn-secondary btn-sm border-squre" style={{display: "inline-block", }}>
                                         Login
                                     </span>
                                 </Link>
@@ -81,8 +88,11 @@ export const Header = () => {
                 {open && <div className="user-profile-buttons">
                      <ul>
                          <li className="list-style-none">
-                             <button className="btn btn-sm btn-block" onClick={() => {
-                                 logout()
+                             <button className="btn btn-sm btn-block" onClick={async () => {
+                                 await logout()
+                                 userDataDispatch({
+                                     type: "LOGOUT"
+                                 })
                                  handleButtonClick()
                                  navigate("/videos")
                              }}>Logout</button>

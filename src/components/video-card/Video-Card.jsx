@@ -4,13 +4,14 @@ import { useAuth } from "../../context/auth-context"
 import { useUserData } from "../../context/user-data-context"
 import { Link } from "react-router-dom"
 import { PlaylistModal } from "../index";
-import {useState} from "react"
+import { useState } from "react"
 
 import "./video-card.css"
 export const VideoCard = ({ video, history }) => {
     const { token } = useAuth()
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);
     const { userDataState, userDataDispatch } = useUserData()
+
 
     return (
         <div className="video-card">
@@ -21,16 +22,13 @@ export const VideoCard = ({ video, history }) => {
                 <div className="video-card-body">
                     <div className="video-card-content">
                         <VideoCardContent heading={video.title} />
-                        <VideoCardMenu item={video}  playlistState = {setShowPlaylistModal} />
+                        <VideoCardMenu item={video} playlistState={setShowPlaylistModal} />
                     </div>
                     <div>
                         <VideoCardFooter date={video.uploadDate} creator={video.creator} />
                     </div>
                 </div>
             </Link>
-            {/* <div style={{ position: "absolute", top: "75%", right: "1%"}}>
-                        <VideoCardMenu item={video} />
-            </div> */}
             {
                 showPlaylistModal && (
                     <PlaylistModal
@@ -49,7 +47,6 @@ export const VideoCard = ({ video, history }) => {
                 </div>
 
             }
-
         </div>
     )
 }
