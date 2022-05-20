@@ -33,9 +33,6 @@ export const Header = () => {
     return (
         <header className="flex-space-around p-2 header">
             <div className="inline-centre">
-                <button className="open-menu">
-                    <i className="fa fa-bars"></i>
-                </button>
                 <h2>
                     <Link to="/videos" className="nav-text-primary text-decoration-none">
                         <i>Streaming</i>
@@ -57,11 +54,9 @@ export const Header = () => {
                 <ul className="horizontal-align-centre nav-text-primary">
                     <li className="list-style-none">
                         {token ?
-                            // <button>
                                 <button
                                     className="inline-centre nav-text-primary btn-icon-text-left btn-sm nav-btn-primary"
                                     onClick={() => {
-                                        // setShowProfileState(!showProfileState)
                                         handleButtonClick()
                                     }}
                                 >
@@ -69,7 +64,6 @@ export const Header = () => {
                                         <i className="fas fa-user fs-md"></i>
                                     </span>
                                 </button>
-                            // </button>
                             :
                             <button>
                                 <Link

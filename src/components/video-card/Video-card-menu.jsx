@@ -81,7 +81,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                 }}
                             >
                                 <i className="fa-solid fa-clock-rotate-left"></i>
-                                <span> Remove From Watch Later </span>
+                                <span> Remove From Watchlater </span>
                             </div> :
                             <div
                                 onClick={(e) => {
@@ -95,7 +95,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                 }}
                             >
                                 <i className="fa-solid fa-clock-rotate-left"></i>
-                                <span>Save to Watch Later</span>
+                                <span>Save to Watchlater</span>
                             </div>
                         }
                         <div

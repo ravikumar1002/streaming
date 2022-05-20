@@ -14,3 +14,13 @@
   position: sticky;
   top: 4.5rem;
 }
+
+@media (max-width: 768px) {
+  .aside-container {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    height: auto;
+    top: auto;
+  }
+}

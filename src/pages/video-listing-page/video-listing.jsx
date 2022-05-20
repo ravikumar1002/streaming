@@ -13,7 +13,7 @@ export const VideosListing = () => {
     }, [videoState.allVideos])
 
     return (
-        <div className="videos-page">
+        <div className="grid-layout">
             {showPageVideo.length > 0 ? showPageVideo.map((video) => {
                 return (
                     <div key={video._id}>

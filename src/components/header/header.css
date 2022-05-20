@@ -11,11 +11,11 @@
 }
 
 .header{
-  color: white;
+  color: var(--light);
 }
 
 .header .input-search-icon{
-  color: black;
+  color: var(--dark);
 }
 
 .nav-bg-primary {
@@ -50,11 +50,11 @@
 }
 
 .user-profile-buttons li button {
-  color: rgb(255, 255, 255);
+  color: var(--light);
 }
 
 .user-profile-buttons li:hover{
-  background: rgb(48, 101, 199);
+  background: var(primary-bg);
 }
 
 @media screen and (max-width: 730px) {

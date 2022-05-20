@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1rem;
   width: 5rem;
-  padding: 1rem;
+  padding: 1rem 0;
   align-items: center;
   position: sticky;
   top: 5rem;
@@ -11,8 +11,7 @@
 
 .aside-bar i {
   font-size: 1.5rem;
-  padding: 0.5rem 0rem;
-  color: white;
+  padding: 0.5rem;
 }
 
 .aside-bar-wrapper {
@@ -21,5 +20,14 @@
   left: 5%;
   height: 100%;
   background: linear-gradient(78deg, #1C076FF2 2%, #07293DED 100%);
-  color: white;
+}
+
+
+@media (max-width: 768px) {
+  .aside-bar {
+    justify-content: space-around;
+    width: 100%;
+    flex-direction: row;
+    padding: inherit;
+  }
 }

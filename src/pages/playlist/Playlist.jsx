@@ -31,7 +31,10 @@ export const PlayList = () => {
                             </div>
                         </div>
                     )
-                }) : <p>empty playlist</p>}
+                }) : <div>
+                    <p>Your Playlist is Empty</p>
+                    <button className="btn-sm border-squre form-submit btn-block">Start Exporling</button>
+                    </div>}
             </div>
         </div>
     )
