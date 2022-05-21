@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useUserData } from "../../context/user-data-context"
 import { PlaylistVideo } from "./components/playlist-video/PlaylistVideo"
+import { EmptyPage } from "../../components/empty-page/EmptyPage"
 
 export const SinglePlaylistPage = () => {
     const { playlistid } = useParams()
@@ -20,16 +21,16 @@ export const SinglePlaylistPage = () => {
     }, [userDataState.playlist])
 
     return (
-        <div>
-            <div>{videosInCurrentPlaylist?.title}</div>
+        <div style={{ height: "100%" }}>
 
-            {videosInCurrentPlaylist?.videos.length > 0 ? videosInCurrentPlaylist?.videos.map((video) => {
-                return (
-                    <div key={video._id}>
-                        <PlaylistVideo video={video} playlistIdForVideo={videosInCurrentPlaylist._id} />
-                    </div>
-                )
-            }) : <p>empty Playlist</p>}
+            {videosInCurrentPlaylist?.videos.length > 0 && <div  className="grid-layout">
+                {videosInCurrentPlaylist?.videos.map((video) => {
+                    return (
+                            <PlaylistVideo video={video} playlistIdForVideo={videosInCurrentPlaylist._id} key={video._id} />
+                    )
+                })}</div>
+            }
+            {videosInCurrentPlaylist?.videos.length  === 0 && <EmptyPage emptyText={`Your ${videosInCurrentPlaylist?.title} is Empty`} btnText={"Start Explore"} linkRoute={"/videos"} />}
         </div>
     )
 }

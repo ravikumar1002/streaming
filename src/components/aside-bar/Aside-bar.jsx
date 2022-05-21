@@ -2,9 +2,21 @@ import { Link, NavLink } from "react-router-dom";
 import "./aside-bar.css";
 
 export const AsideBar = () => {
-    const getActiveStyle = ({ isActive }) => ({
-        color: isActive ? "black" : ""
-    });
+    const activeStyle = {
+        color: "white",
+        background: "#616161",
+        borderRadius: "50 %",
+        padding: "0.5rem",
+        borderRadius: "5px",
+    };
+
+    const deactiveStyle = {
+        color: "white",
+        padding: "0.5rem",
+    };
+
+    const getActiveStyle = ({ isActive }) =>
+        isActive ? activeStyle : deactiveStyle;
     return (
         <div className="aside-bar-wrapper">
             <nav className="aside-bar">
@@ -24,7 +36,7 @@ export const AsideBar = () => {
                     <span>
                         <i className="fa-solid fa-heart"></i>
                     </span>
-                </NavLink >
+                </NavLink>
 
                 <NavLink style={getActiveStyle} to="/watchlater">
                     <span>

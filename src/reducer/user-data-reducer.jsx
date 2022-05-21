@@ -25,7 +25,23 @@ const userDataReducer = (state, action) => {
                 return {
                     ...state,
                     history: action.payload.historyVideoData
-                }
+            }
+        case "LOGOUT" : 
+            return {
+                playlist: [],
+                watchLater: [],
+                liked: [],
+                history: [],
+            }
+        
+
+        case "login" : 
+            return {
+                playlist: action.payload.loginData.playlists,
+                watchLater: action.payload.loginData.watchlater,
+                liked: action.payload.loginData.likes,
+                history: action.payload.loginData.history
+            }
     }
 }
 

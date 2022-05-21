@@ -1,11 +1,11 @@
 import { useAuth } from "../../context/auth-context"
-
+import { Link } from "react-router-dom"
+import "./home.css"
 export const Home = () => {
- const {user} =  useAuth()
     return (
-        <div>
-            <p>{user?.encodedToken}</p>
-            <h2> Welcome to the Streaming</h2>
+        <div className="home-page-wrapper centre">
+                <p>Welcome to Streaming</p>
+                    <Link to= "/videos" className="home-btn">Explore</Link>
         </div>
     )
 }

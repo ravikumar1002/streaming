@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
+// import { ToastContainer, toast } from 'react-toastify';
 
 export const SignUp = () => {
     const location = useLocation();
@@ -31,7 +32,6 @@ export const SignUp = () => {
     };
 
     const showPasswordFn = (e, passwordType, value) => {
-        console.log(e, passwordType, value)
         e.stopPropagation();
         setShowPassword((prev) => ({ ...prev, [passwordType]: value }));
     };
@@ -55,9 +55,10 @@ export const SignUp = () => {
                     <form
                         action=""
                         className="auth-wrapper"
-                        onSubmit={(e) => {
+                        onSubmit={async (e) => {
                             e.preventDefault();
-                            userSignUp(signupDetail, location);
+                            await userSignUp(signupDetail, location);
+                            // sucessSignIn()
                             setSignupDetail(emptyField)
                         }}
                     >

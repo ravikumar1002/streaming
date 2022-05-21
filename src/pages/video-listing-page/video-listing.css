@@ -1,6 +1,6 @@
 .videos-page {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
   padding: 2rem 1rem;
 }  

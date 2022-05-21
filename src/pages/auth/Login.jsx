@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
+import { useUserData } from "../../context/user-data-context";
 export const Login = () => {
     const location = useLocation();
     const { userlogin } = useAuth();
@@ -9,6 +10,7 @@ export const Login = () => {
         email: "",
         password: "",
     }
+    const {userDataState, userDataDispatch}  = useUserData()
     const [loginDetail, setloginDetail] = useState({ ...defaultLoginValue });
     const [showPassWord, setShowPassword] = useState(false);
 
@@ -32,9 +34,15 @@ export const Login = () => {
                     <form
                         action=""
                         className="auth-wrapper"
-                        onSubmit={(e) => {
+                        onSubmit={ async(e) => {
                             e.preventDefault();
-                            userlogin(loginDetail, location);
+                            const data = await userlogin(loginDetail, location);
+                             userDataDispatch({
+                                type: "login",
+                                payload: {
+                                    loginData: data.foundUser
+                                }
+                            })
                             setloginDetail({ ...defaultLoginValue })
                         }}
                     >

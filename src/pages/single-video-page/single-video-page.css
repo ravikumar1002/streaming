@@ -4,8 +4,12 @@
   gap: 2rem;
 }
 
-.single-video-wrapper > div:first-child{
+.single-video-wrapper > div:first-child {
   flex-grow: 2;
+}
+
+.single-video-wrapper .video-card-img {
+  width: 20rem;
 }
 
 .single-video-player {
@@ -23,4 +27,27 @@
   margin: 0 1rem;
   cursor: pointer;
   font-size: 1.2rem;
+}
+
+@media (max-width: 1024px) {
+  .single-video-wrapper {
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .single-video-player {
+    height: 25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .single-video-player {
+    height: 23rem;
+  }
+}
+
+@media (max-width: 48px) {
+  .single-video-player {
+    height: 20rem;
+  }
 }

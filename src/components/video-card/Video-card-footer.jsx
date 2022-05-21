@@ -3,8 +3,8 @@ export const VideoCardFooter = ({ date, creator }) => {
 
   return (
     <div className="flex-space-between">
-      <b>{creator}</b>
-      <span>{date}</span>
+      <small><b>{creator}</b></small>
+      <small>{date}</small>
     </div>
   )
 }

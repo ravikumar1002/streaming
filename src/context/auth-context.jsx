@@ -51,6 +51,7 @@ const AuthProvider = ({ children }) => {
         setLocalStroge(data)
         setData(data)
         setPath(path)
+        return data
     }
 
     const logout = () => {

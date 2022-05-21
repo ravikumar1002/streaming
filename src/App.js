@@ -1,4 +1,7 @@
 import { useContext } from "react";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import "react-toastify/dist/ReactToastify.min.css";
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import "./css/utility.css";
 import {
@@ -12,6 +15,7 @@ import {
   WatchLater,
   Liked,
   History,
+  ErrorPage,
 } from "./pages/index";
 import { Routes, Route, Link } from "react-router-dom";
 import DataLayer from "./Data-layer";
@@ -23,20 +27,24 @@ function App() {
   return (
     <div className="App">
       <DataLayer>
+        <ToastContainer position="top-right" autoClose={700} draggable />
         <div className="header-wrapper">
           <Header />
         </div>
-        <div style={{ display: "flex" }}>
-          <div>
+        <div className="d-flex">
+          <div className="aside-container">
             <AsideBar />
           </div>
-          <div className="w-100">
+          <div className="w-100" style={{ background: "#fefefe" }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/videos" element={<VideosListing />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/videos/:singlevideoid" element={<SingleVideoPage/>} />
+              <Route
+                path="/videos/:singlevideoid"
+                element={<SingleVideoPage />}
+              />
               <Route path="/mockman" element={<Mockman />} />
               <Route
                 path="/playlist"
@@ -66,7 +74,7 @@ function App() {
                 path="/watchlater"
                 element={
                   <RequiresAuth>
-                    < WatchLater/>
+                    <WatchLater />
                   </RequiresAuth>
                 }
               />
@@ -78,8 +86,7 @@ function App() {
                   </RequiresAuth>
                 }
               />
-              <Route path="*" />
-
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </div>
         </div>

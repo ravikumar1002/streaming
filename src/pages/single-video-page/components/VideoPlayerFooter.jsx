@@ -3,6 +3,8 @@ import { PlaylistModal } from "../../../components";
 import { useAuth } from "../../../context/auth-context";
 import { addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked } from "../../../services"
 import { useUserData } from "../../../context/user-data-context";
+import {  toast } from 'react-toastify';
+
 export const VideoPlayerFooter = ({ currentVideo }) => {
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);
     const { token } = useAuth();
@@ -20,11 +22,7 @@ export const VideoPlayerFooter = ({ currentVideo }) => {
                 {
                     findExistsOrNot(userDataState.liked, currentVideo._id) ?
                         <span onClick={() => {
-                            if (token) {
                                 deleteVideoFromLiked(token, currentVideo._id, userDataDispatch);
-                            } else {
-                                alert("login first");
-                            }
                         }}>
                             <i className="fa-solid fa-heart"></i>
                         </span>
@@ -33,7 +31,7 @@ export const VideoPlayerFooter = ({ currentVideo }) => {
                             if (token) {
                                 addVideoInLiked(token, currentVideo, userDataDispatch);
                             } else {
-                                alert("login first");
+                                toast.error("You are not logged in") 
                             }
                         }}>
                             <i className="fa-regular fa-heart"></i>
@@ -41,11 +39,7 @@ export const VideoPlayerFooter = ({ currentVideo }) => {
                 }
                 {findExistsOrNot(userDataState.watchLater, currentVideo._id) ?
                     <span onClick={() => {
-                        if (token) {
                             deleteVideoFromWatchLater(token, currentVideo._id, userDataDispatch);
-                        } else {
-                            alert("login first");
-                        }
 
                     }}>
                         <i className="fa-solid fa-clock"></i>
@@ -55,7 +49,7 @@ export const VideoPlayerFooter = ({ currentVideo }) => {
                         if (token) {
                             addVideoInWatchLater(token, currentVideo, userDataDispatch);
                         } else {
-                            alert("login first");
+                            toast.error("You are not logged in") 
                         }
                     }}>
                         <i className="fa-regular fa-clock"></i>
@@ -66,7 +60,7 @@ export const VideoPlayerFooter = ({ currentVideo }) => {
                     if (token) {
                         setShowPlaylistModal(true);
                     } else {
-                        alert("login first")
+                        toast.error("You are not logged in") 
                     }
                 }}>
                     <i className="fa-solid fa-list-ul"></i>

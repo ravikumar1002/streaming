@@ -1,6 +1,6 @@
 import "./playlist-card.css"
 
-export const PlaylistCard = ({ videoPlaylist }) => {
+export const PlaylistCard = ({ videoPlaylist, deletePlaylistFromServer , token, userDataDispatch}) => {
     const findFirstVideoImg = (videos) => {
         return videos[0]._id
     }
@@ -16,12 +16,16 @@ export const PlaylistCard = ({ videoPlaylist }) => {
                 <div className="playlist-card-count-section">
                     <p>{videoPlaylist?.videos.length}</p>
                 </div>
-
             </div>
-            <div className="playlist-card-tilte-section">
-                <div>
-                    <p>{videoPlaylist.title}</p>
-                </div>
+            <div className="playlist-card-tilte-section p-1">              
+                    <p className="fs-md fw-700">{videoPlaylist.title}</p>
+                    <div onClick={(e) => {
+                        e.preventDefault()
+                        deletePlaylistFromServer(videoPlaylist._id, token, userDataDispatch)
+                    }}
+                    >
+                        <i className="fa fa-trash fs-md mr-1" ></i>
+                    </div>               
             </div>
         </div>
     )

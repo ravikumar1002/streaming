@@ -1,0 +1,23 @@
+.home-page-wrapper{
+    flex-direction: column;
+    background:radial-gradient(circle at 50% 50%, rgba(7, 10, 71, 1) 5%, rgba(7, 10, 71, 1) 13%, rgba(25, 29, 74, 1) 27%);
+}
+
+.home-page-wrapper p {
+    font-style: italic;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--light);
+    margin: 1rem;
+}
+
+.home-btn{
+    display: inline-block;
+    padding: 1rem;
+    color: rgba(7, 10, 71, 1);
+    background-color: var(--light-bg);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}

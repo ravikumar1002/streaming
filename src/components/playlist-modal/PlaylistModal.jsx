@@ -21,7 +21,7 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
             .videos.find((playlistVideo) => playlistVideo._id === video._id);
         if (findVideo) {
             return true;
-        } 
+        }
     };
 
     const handleClickOutside = (e) => {
@@ -38,14 +38,14 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
         <div
             className={`${showModal ? "playlist-modal-wrapper" : "d-none"}`}
         >
-            <div className="playlist-modal container" 
-            ref = {container}
+            <div className="playlist-modal container"
+                ref={container}
             >
                 <div>
                     <div className="playlist-modal-heading p-1">
                         <span>Save To...</span>
                         <span
-                            onClick={() => {
+                            onClick={(e) => {
                                 hideModal(false);
                             }}
                             className="fa fa-times "
@@ -60,11 +60,12 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
                                     className="playlists-in-modal"
                                     key={list._id}
                                     onClick={(e) => {
-                                        if(checkAlreadyExitsOrNot(list,newVideo)){
-                                            deleteVideoInPLaylist(list._id, newVideo._id, token,userDataState, userDataDispatch)    
+                                        e.preventDefault()
+                                        if (checkAlreadyExitsOrNot(list, newVideo)) {
+                                            deleteVideoInPLaylist(list._id, newVideo._id, token, userDataState, userDataDispatch)
                                             getAllPlaylistFromServer(token, userDataDispatch)
-                                        }else {
-                                            addNewVideoInPlayList(list._id, newVideo, token,userDataState, userDataDispatch);
+                                        } else {
+                                            addNewVideoInPlayList(list._id, newVideo, token, userDataState, userDataDispatch);
                                             getAllPlaylistFromServer(token, userDataDispatch)
                                         }
                                         hideModal(true);
@@ -73,7 +74,7 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
                                     <label
                                         htmlFor={`playlist-checkbox${list._id}`}
                                         className="d-flex w-100 p-1"
-                                        
+
                                     >
                                         <input
                                             type="checkbox"
@@ -102,13 +103,13 @@ export const PlaylistModal = ({ showModal, hideModal, newVideo }) => {
                                     };
                                 });
                             }}
-                            className=""
+                           
                         />
                         <button
-                            onClick={() => {
+                            onClick={(e) => {
                                 setShowNewPlaylistForm(false);
-                                if(playlistname.title.trim().length > 0){
-                                createNewPlayList(playlistname, token, userDataDispatch);
+                                if (playlistname.title.trim().length > 0) {
+                                    createNewPlayList(playlistname, token, userDataDispatch);
                                 }
                             }}
                             className="btn btn-x-sm btn-primary border-squre mt-1 fs-sm"
