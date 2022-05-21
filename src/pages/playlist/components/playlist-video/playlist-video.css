@@ -4,15 +4,15 @@
   gap: 1rem;
 }
 
-.playlist-video-img {
-  width: 8rem;
-}
-
 .playlist-video-title {
-  flex-grow: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0rem;
+  align-items: center;
 }
 
 .playlist-video-icon {
-  align-self: center;
-  font-size: 1.5rem;
+  align-self: start;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
 }

@@ -7,23 +7,24 @@ export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
     const { userDataState, userDataDispatch } = useUserData()
     const { token } = useAuth()
 
- 
+
     return (
-        <div className="playlist-video">
-            <Link to= {`/videos/${video._id}`} className="video-card-link">
-            <div className="playlist-video-img">
-                <img src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`} alt={video.title} />
-            </div>
-            <div className="playlist-video-title">
-                <h3>{video.title}</h3>
-                <p>{video.description}</p>
-            </div>
+        <div>
+            <Link to={`/videos/${video._id}`} className="video-card-link">
+                <div>
+                    <img src={`https://i.ytimg.com/vi/${video._id}/maxresdefault.jpg`} alt={video.title} />
+                </div>
+                <div className="playlist-video-title">
+                    <h3>{video.title}</h3>
+                    <span className="fa fa-trash playlist-video-icon" onClick={() => {
+                        deleteVideoInPLaylist(playlistIdForVideo, video._id, token, userDataState, userDataDispatch)
+                    }}></span>
+                </div>
+                <div>
+                    <p className="fs-x-sm">{video.description}</p>
+                </div>
             </Link>
-            <div className="playlist-video-icon">
-                <span className="fa fa-trash" onClick={() => {
-                    deleteVideoInPLaylist(playlistIdForVideo, video._id, token,userDataState, userDataDispatch)
-                }}></span>
-            </div>
+            
         </div>
     )
 }

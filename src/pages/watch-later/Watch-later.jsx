@@ -3,6 +3,7 @@ import { getWatchLater } from "../../api-calls"
 import { useEffect } from "react"
 import { useAuth } from "../../context/auth-context"
 import { VideoCard } from "../../components/video-card/Video-Card"
+import { EmptyPage } from "../../components/empty-page/EmptyPage"
 export const WatchLater = () => {
 
     const { userDataState, userDataDispatch } = useUserData()
@@ -23,13 +24,16 @@ export const WatchLater = () => {
     }, [])
 
     return (
-        <div>
-            {userDataState.watchLater.length > 0 ? userDataState.watchLater.map((video) => {
-                return (
+        <div style={{height: "100%"}}>
+            {userDataState.watchLater.length > 0 && <div className="grid-layout">
+                {userDataState.watchLater.map((video) => {
+                    return (
 
-                    <VideoCard video={video} key={video._id} />
-                )
-            }) : <p>Watch later is empty</p>}
+                        <VideoCard video={video} key={video._id} />
+                    )
+                })}
+            </div>}
+            {userDataState.watchLater.length === 0 && <EmptyPage emptyText={"Your Watchlater is Empty"} btnText={"Start Explore"} linkRoute={"/videos"}/>}
         </div>
     )
 }

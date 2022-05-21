@@ -10,7 +10,7 @@
 }
 
 .aside-container {
-  height: 42.6rem;
+  height: 100vh;
   position: sticky;
   top: 4.5rem;
 }
@@ -22,5 +22,6 @@
     width: 100%;
     height: auto;
     top: auto;
+    z-index: 3;
   }
 }

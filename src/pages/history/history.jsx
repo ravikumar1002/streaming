@@ -3,6 +3,7 @@ import { useAuth } from "../../context/auth-context"
 import { useUserData } from "../../context/user-data-context"
 import { getAllVideoHistory , deleteAllHistoryFromServer} from "../../services"
 import { VideoCard } from "../../components"
+import { EmptyPage } from "../../components/empty-page/EmptyPage"
 
 export const History = () => {
     const { token } = useAuth()
@@ -13,7 +14,7 @@ export const History = () => {
     }, [])
 
     return (
-        <div className="m-2 p-1">
+        <div className="m-2 p-1" style={{height: `${userDataState.history.length === 0 ? "97%" : "auto" }`}}>
             <div className="flex-space-between ">
                 <div>
                     <h2>All History</h2>
@@ -24,14 +25,14 @@ export const History = () => {
                     }} className= "btn btn-danger btn-sm border-squre">Clear History</button>
                 </div>
             </div>
-            <div className="p-2 d-flex gap-2" >
+            <div className="p-2 d-flex gap-2"  style={{height: `${userDataState.history.length === 0 ? "78%" : "auto" }`}}>
                 {userDataState.history.length > 0 ? userDataState.history.map((history) => {
                     return (
-                        <div key={history._id}>
+                        <div key={history._id} className= "w-100">
                         <VideoCard video={history} history = {true} />
                         </div>
                     )
-                }) : <div>no item</div>}
+                }) : <EmptyPage emptyText ={"Your History is Empty"} btnText ={"Start Explore"} linkRoute ={"/videos"}/>}
             </div>
         </div>
     )
