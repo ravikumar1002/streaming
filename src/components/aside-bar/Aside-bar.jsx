@@ -51,7 +51,7 @@ export const AsideBar = () => {
                 </NavLink>
                 <NavLink style={getActiveStyle} to="/uploadvideo">
                     <span>
-                        <i className="fa-solid fa-list-ul"></i>
+                        <i className="fa-solid fa-upload"></i>
                     </span>
                 </NavLink>
             </nav>
