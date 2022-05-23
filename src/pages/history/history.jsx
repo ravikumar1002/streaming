@@ -25,7 +25,7 @@ export const History = () => {
                     }} className= "btn btn-danger btn-sm border-squre">Clear History</button>
                 </div>
             </div>
-            <div className="p-2 d-flex gap-2"  style={{height: `${userDataState.history.length === 0 ? "78%" : "auto" }`}}>
+            <div className={`p-2 d-flex gap-2 ${userDataState.history.length >  0 ? "grid-layout" : "" }`}  style={{height: `${userDataState.history.length === 0 ? "78%" : "auto" }`}}>
                 {userDataState.history.length > 0 ? userDataState.history.map((history) => {
                     return (
                         <div key={history._id} className= "w-100">

@@ -12,9 +12,8 @@ export const VideoCard = ({ video, history }) => {
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);
     const { userDataState, userDataDispatch } = useUserData()
 
-
     return (
-        <div className="video-card">
+        <div className={`video-card ${history ? "pos-rel" : ""}`}>
             <Link to={`/videos/${video._id}`} className="video-card-link">
                 <div className="video-card-img">
                     <VideoCardImg id={video._id} title={video.title} />
@@ -39,7 +38,7 @@ export const VideoCard = ({ video, history }) => {
                 )
             }
             {
-                history && <div style={{ position: "absolute", top: "5%", right: "1%" }}>
+                history && <div style={{ position: "absolute", top: "5%", right: "5%" }}>
                     <button className="btn-sm btn-danger border-squre" onClick={() => {
                         deleteHistoryFromServer(video._id, token, userDataDispatch)
                     }}> <i class="fa fa-times"></i></button>
