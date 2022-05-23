@@ -16,6 +16,7 @@ import {
   Liked,
   History,
   ErrorPage,
+  UploadVideo,
 } from "./pages/index";
 import { Routes, Route, Link } from "react-router-dom";
 import DataLayer from "./Data-layer";
@@ -83,6 +84,14 @@ function App() {
                 element={
                   <RequiresAuth>
                     <History />
+                  </RequiresAuth>
+                }
+              />
+              <Route
+                path="/uploadvideo"
+                element={
+                  <RequiresAuth>
+                    <UploadVideo />
                   </RequiresAuth>
                 }
               />

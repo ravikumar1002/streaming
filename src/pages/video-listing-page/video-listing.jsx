@@ -10,6 +10,7 @@ export const VideosListing = () => {
 
     useEffect(() => {
         setShowPageVideo(videoState.allVideos)
+        console.log('nnn')
     }, [videoState.allVideos])
 
     return (

@@ -8,6 +8,12 @@ const videoReducer = (state, action) => {
                 ...state,
                 allVideos: action.payload.videos
             }
+
+        case "UPLOAD_VIDEO":
+        return {
+         ...state, 
+         allVideos : [...state.allVideos , action.payload.video]
+        }
     }
 }
 
