@@ -223,7 +223,6 @@ const getALlNotes = async(authToken) => {
 
 const addNotesInVideo = async (note, authToken, userDataDispatch) => {
   const saveNoteVideoInServer = await addNewNote(note, authToken);
-  console.log(saveNoteVideoInServer)
   userDataDispatch({
     type: "NOTES",
     payload: {

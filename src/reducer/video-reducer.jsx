@@ -16,7 +16,6 @@ const videoReducer = (state, action) => {
         }
 
         case "INCREASE_COUNT" : 
-        console.log(action.payload.videos)
         return {
             ...state,
             allVideos: [...action.payload.videos]

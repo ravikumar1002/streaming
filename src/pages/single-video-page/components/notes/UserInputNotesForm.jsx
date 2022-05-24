@@ -24,8 +24,6 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
         return false
     }
 
-    console.log(id)
-
 
     const addNoteHandler = (e) => {
         if (token) {
@@ -60,7 +58,6 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
         }
     };
 
-    console.log(notesInput)
     return (
         <form
             onSubmit={(e) => {

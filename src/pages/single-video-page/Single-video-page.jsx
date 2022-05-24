@@ -15,11 +15,9 @@ export const SingleVideoPage = () => {
     const { videoState } = useVideoDataFromServer()
     const { userDataState, userDataDispatch } = useUserData()
 
-    console.log(userDataState)
     const currentVideo = videoState.allVideos.find(videos => videos._id === singlevideoid)
     const categoryVideo = videoState.allVideos.filter(category => currentVideo.category === category.category && currentVideo._id !== category._id)
     const notes = userDataState?.notes.filter((note) => note.id === singlevideoid).sort((a, b) => b.noteCreatedTime - a.noteCreatedTime);
-    // console.log(currentVideo?._id, "currV")
     return (
         <div className="single-video-wrapper">
             {
