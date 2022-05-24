@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { PlaylistModal } from "../../../components";
-import { useAuth } from "../../../context/auth-context";
-import { addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked } from "../../../services"
-import { useUserData } from "../../../context/user-data-context";
+import { PlaylistModal } from "../../../../components";
+import { useAuth } from "../../../../context/auth-context";
+import { addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked } from "../../../../services"
+import { useUserData } from "../../../../context/user-data-context";
 import {  toast } from 'react-toastify';
 import { VideoPlayerMenu } from "./VideoPlayerMenu";
-import { VideoCardMenu } from "../../../components/video-card";
+import { VideoCardMenu } from "../../../../components/video-card";
 
 export const VideoPlayerCentre = ({ currentVideo }) => {
     const [showPlaylistModal, setShowPlaylistModal] = useState(false);

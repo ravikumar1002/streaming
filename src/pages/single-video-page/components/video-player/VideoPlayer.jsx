@@ -1,14 +1,15 @@
 import ReactPlayer from 'react-player/youtube'
-import { useAuth } from '../../../context/auth-context';
-import { addVideoInHistory } from "../../../services"
-import { useUserData } from '../../../context/user-data-context';
-import { useVideoDataFromServer } from "../../../context/video-context"
+import { useAuth } from '../../../../context/auth-context';
+import { addVideoInHistory } from "../../../../services"
+import { useUserData } from '../../../../context/user-data-context';
+import { useVideoDataFromServer } from "../../../../context/video-context"
 
 
-export const VideoPlayer = ({ video }) => {
-    const { videoState , videoDispatch } = useVideoDataFromServer();
+export const VideoPlayer = ({ video, currentVideoRef }) => {
+    const { videoState, videoDispatch } = useVideoDataFromServer();
     const { token } = useAuth()
     const { userDataDispatch } = useUserData()
+    
     const increaseViewCount = (video) => {
         const updatedVideo = videoState.allVideos.map((eachVideo) =>
             eachVideo._id === video._id
@@ -25,11 +26,12 @@ export const VideoPlayer = ({ video }) => {
                 controls
                 width="100%"
                 height="90%"
-                className='react-player'
+                className='react-player currentVideoRef'
                 onStart={() => {
                     if (token) addVideoInHistory(video, token, userDataDispatch);
                     increaseViewCount(video)
                 }}
+                ref={currentVideoRef}
             />
         </div>
     )

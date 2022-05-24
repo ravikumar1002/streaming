@@ -12,6 +12,10 @@ import {
   postHistory,
   deleteHistory,
   deleteAllHistory,
+  addNewNote,
+  getNotes,
+  deleteNote,
+  updateNote,
 } from "./api-calls";
 import { useUserData } from "./context/user-data-context";
 
@@ -183,7 +187,6 @@ const addVideoInHistory = async (historyVideo, authToken, userDataDispatch) => {
   });
 };
 
-
 const deleteHistoryFromServer = async (
   historyId,
   authToken,
@@ -198,16 +201,52 @@ const deleteHistoryFromServer = async (
   });
 };
 
-
-const deleteAllHistoryFromServer = async (
-  authToken,
-  userDataDispatch
-) => {
+const deleteAllHistoryFromServer = async (authToken, userDataDispatch) => {
   const getdeletedAllHistory = await deleteAllHistory(authToken);
   userDataDispatch({
     type: "HISTORY_VIDEOS",
     payload: {
       historyVideoData: getdeletedAllHistory.history,
+    },
+  });
+};
+
+const getALlNotes = async(authToken) => {
+  const getNoteVideoInServer = await getNotes(authToken);
+  userDataDispatch({
+    type: "NOTES",
+    payload: {
+      notes: getNoteVideoInServer.notes,
+    },
+  });
+}
+
+const addNotesInVideo = async (note, authToken, userDataDispatch) => {
+  const saveNoteVideoInServer = await addNewNote(note, authToken);
+  userDataDispatch({
+    type: "NOTES",
+    payload: {
+      notes: saveNoteVideoInServer.notes,
+    },
+  });
+};
+
+const deleteNotesInVideo = async (noteId, authToken, userDataDispatch) => {
+  const getdeletedNotes = await deleteNote(noteId, authToken);
+  userDataDispatch({
+    type: "NOTES",
+    payload: {
+      notes: getdeletedNotes.notes,
+    },
+  });
+};
+
+const updateNotesInVideo = async (noteId, note,  authToken, userDataDispatch) => {
+  const UpdateNoteVideoInServer = await updateNote(noteId,note, authToken);
+  userDataDispatch({
+    type: "NOTES",
+    payload: {
+      notes: UpdateNoteVideoInServer.notes,
     },
   });
 };
@@ -227,5 +266,9 @@ export {
   getAllVideoHistory,
   addVideoInHistory,
   deleteHistoryFromServer,
-  deleteAllHistoryFromServer
+  deleteAllHistoryFromServer,
+  getALlNotes,
+  addNotesInVideo,
+  deleteNotesInVideo,
+  updateNotesInVideo,
 };

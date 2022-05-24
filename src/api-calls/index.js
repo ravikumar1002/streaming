@@ -19,3 +19,4 @@ export {
   deleteHistory,
   deleteAllHistory,
 } from "./getHistory";
+export { addNewNote, getNotes, deleteNote, updateNote } from "./getNotes";
