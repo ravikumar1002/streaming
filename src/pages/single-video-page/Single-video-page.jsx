@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import "./single-video-page.css"
 import { useVideoDataFromServer } from "../../context/video-context"
-import { VideoPlayer, VideoPlayerFooter } from './components';
+import { VideoPlayer, VideoPlayerCentre } from './components';
 import { VideoCard } from "../../components";
+import { SignglePlayerFooter } from "./components/SinglePlayerFooter";
 
 export const SingleVideoPage = () => {
     const { singlevideoid } = useParams()
@@ -16,7 +17,8 @@ export const SingleVideoPage = () => {
                 videoState.allVideos.length > 0 ? <div>
                     <div className='single-video-player'>
                         <VideoPlayer video={currentVideo} />
-                        <VideoPlayerFooter currentVideo={currentVideo} />
+                        <VideoPlayerCentre currentVideo={currentVideo} />
+                        <SignglePlayerFooter totalViews={currentVideo.viewCount} description = {currentVideo.description} />
                     </div>
                     <div>
                     </div>

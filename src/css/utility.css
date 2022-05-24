@@ -40,6 +40,9 @@
 .mt-1 {
   margin-top: 0.5rem;
 }
+.mb-1{
+  margin-bottom: 0.5rem;
+}
 
 .mx-1{
   margin: 0 1rem;
@@ -63,6 +66,10 @@
 
 .py-1 {
   padding: 0.5rem 0rem;
+}
+
+.px-2{
+  padding: 0 1rem;
 }
 
 .py-2 {
@@ -96,4 +103,8 @@
 .flex-between{
   display: flex;
   justify-content: space-between;
+}
+
+.pos-rel {
+  position: relative;
 }

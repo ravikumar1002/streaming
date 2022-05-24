@@ -8,6 +8,7 @@ const UserDataProvider = ({ children }) => {
         history: [],
         watchLater: [],
         liked: [],
+        uploadedVideo: [],
     }
     const [userDataState, userDataDispatch] = useReducer(userDataReducer, userIntialData)
 

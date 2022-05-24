@@ -1,0 +1,41 @@
+.upload-form-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.textarea-box textarea {
+    width: 60%;
+    height: auto;
+    margin: 0;
+    resize: none;
+}
+
+.upload-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.upload-form > div {
+    display: flex;
+    width: 100%;
+    grid-gap: 0.5rem;
+    gap: 0.5rem;
+}
+
+.textarea-box{
+    align-items: center;
+}
+
+.upload-form > div > label {
+  width: 40%;
+}
+
+.upload-form > div > input {
+  width: 60%;
+  padding: 0.5rem;
+}

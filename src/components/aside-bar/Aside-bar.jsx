@@ -49,6 +49,11 @@ export const AsideBar = () => {
                         <i className="fa-solid fa-list-ul"></i>
                     </span>
                 </NavLink>
+                <NavLink style={getActiveStyle} to="/uploadvideo">
+                    <span>
+                        <i className="fa-solid fa-upload"></i>
+                    </span>
+                </NavLink>
             </nav>
         </div>
     );
