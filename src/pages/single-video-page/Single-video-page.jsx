@@ -43,7 +43,7 @@ export const SingleVideoPage = () => {
                             return (
                                 <SaveNotes key={note._id} note={note} />
                             )
-                        }) : <p>No notes added yet.</p>}
+                        }) : <h3 className="m-1 note-input-wrapper text-center">No notes added yet</h3>}
                     </div>
                 </div>
                 {categoryVideo.length > 0 && <div className="py-1">

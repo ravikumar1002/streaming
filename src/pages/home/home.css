@@ -1,6 +1,8 @@
 .home-page-wrapper{
     flex-direction: column;
     background:radial-gradient(circle at 50% 50%, rgba(7, 10, 71, 1) 5%, rgba(7, 10, 71, 1) 13%, rgba(25, 29, 74, 1) 27%);
+    height: 100vh;
+    text-align: center;
 }
 
 .home-page-wrapper p {

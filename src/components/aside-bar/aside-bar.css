@@ -31,3 +31,10 @@
     padding: inherit;
   }
 }
+
+
+@media (max-width: 480px) {
+  .aside-bar {
+    gap: 0.5rem;
+  }
+}

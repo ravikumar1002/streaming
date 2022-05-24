@@ -20,9 +20,7 @@ export const VideoPlayerCentre = ({ currentVideo }) => {
             <div>
                 <h3>{`${currentVideo.title}`}</h3>
             </div>
-            <VideoPlayerMenu currentVideo={currentVideo} setShowPlaylistModal = {setShowPlaylistModal}/>
-            {/* <VideoCardMenu item={currentVideo} playlistState={setShowPlaylistModal} /> */}
-            
+            <VideoPlayerMenu currentVideo={currentVideo} setShowPlaylistModal = {setShowPlaylistModal} className= "show-menu"/>
             
             {showPlaylistModal && (
                 <PlaylistModal
