@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../../../context/auth-context";
 import { useUserData } from "../../../../context/user-data-context";
 import { addNotesInVideo, updateNotesInVideo } from "../../../../services"
-
+import "./note.css"
 export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }) => {
     const { token } = useAuth();
     const { userDataState, userDataDispatch } = useUserData();
@@ -28,9 +28,6 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
 
 
     const addNoteHandler = (e) => {
-        e.preventDefault();
-        console.log(currentVideoRef.current.getCurrentTime())
-        console.log(editNote)
         if (token) {
             if (getTrimInput(notesInput))
                 addNotesInVideo(
@@ -42,12 +39,12 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
                     token,
                     userDataDispatch,
                 );
+            setNotesInput({ ...defaultValue })
+
         } else toast.info("Please login to add Note!");
     };
 
-    const updateNoteHandler = (e) => {
-        e.preventDefault();
-        console.log(editNote)
+    const updateNoteHandler = () => {
         if (getTrimInput(notesInput)) {
             updateNotesInVideo(
                 editValue._id,
@@ -59,6 +56,7 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
                 userDataDispatch
             );
             editNote(false)
+            setNotesInput({ ...defaultValue })
         }
     };
 
@@ -67,14 +65,14 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
         <form
             onSubmit={(e) => {
                 e.preventDefault()
-                editNote ? updateNoteHandler(e) : addNoteHandler(e)
-                setNotesInput({...defaultValue})
+                editNote ? updateNoteHandler() : addNoteHandler()
             }}
+            className="note-form"
         >
             <div>
                 <input
                     placeholder="Title"
-                    className=""
+                    className="w-100 p-1"
                     value={notesInput?.title}
                     onChange={(e) => {
                         setNotesInput((prev) => {
@@ -101,18 +99,18 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
                     }}
                 />
             </div>
-            <div className="">
-                <button
-                    type="submit"
-                    className=""
-                >
-                    Save
-                </button>
+            <div className="flex-between m-1 mt-2">
                 <button
                     type="button"
-                    className=""
+                    className="btn-sm border-squre btn-danger"
                 >
                     Discard
+                </button>
+                <button
+                    type="submit"
+                    className="btn-sm  border-squre btn-primary"
+                >
+                    Save
                 </button>
             </div>
         </form>

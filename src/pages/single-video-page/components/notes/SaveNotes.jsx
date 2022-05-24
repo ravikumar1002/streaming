@@ -3,6 +3,7 @@ import { useState } from "react";
 import { deleteNotesInVideo } from "../../../../services";
 import { useAuth } from "../../../../context/auth-context";
 import { useUserData } from "../../../../context/user-data-context";
+import "./note.css"
 export const SaveNotes = ({ note }) => {
     const [editNote, setEditNote] = useState(false);
     const { token } = useAuth()
@@ -12,24 +13,25 @@ export const SaveNotes = ({ note }) => {
     return (
         <>
             {!editNote && (
-                <div>
-                    <p >{note.title}</p>
+                <div className="note-input-wrapper">
+                    <h2 >{note.title}</h2>
                     <p >{note.description}</p>
-                    <p>
-                        {note.noteCreatedTime}
+                    <p > <small> <span className="mr-1">Added Time: </span>
+                        {note.noteCreatedTime}</small>
                     </p>
-                    <div>
-                        <button
-                            onClick={() => setEditNote(true)}
-                            className="btn-no-decoration text-white"
-                        >
-                            edit
-                        </button>
+                    <div className="flex-between m-1 mt-2">
                         <button
                             onClick={() => deleteNotesInVideo(note._id, token, userDataDispatch)}
+                            className = " btn-sm btn-danger border-squre fa fa-trash"
                         >
-                            delete
                         </button>
+
+                        <button
+                            onClick={() => setEditNote(true)}
+                            className="btn-sm border-squre btn-primary fa fa-pencil"
+                        >
+                        </button>
+
                     </div>
                 </div>
             )}

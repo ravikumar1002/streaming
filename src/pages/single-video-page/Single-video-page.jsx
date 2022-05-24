@@ -37,10 +37,10 @@ export const SingleVideoPage = () => {
             }
             <div>
                 <div>
-                    <div>
+                    <div className="note-input-wrapper">
                         <UserInputNotesForm currentVideoRef={currentVideoRef} id={currentVideo?._id} editMode={false} />
                     </div>
-                    <div>
+                    <div className="mt-1 m-1 flex-col gap-1">
                         {notes.length > 0 ? notes.map((note) => {
                             return (
                                 <SaveNotes key={note._id} note={note} />
