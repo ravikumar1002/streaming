@@ -52,9 +52,9 @@ export const deleteNote = async (noteId, authToken) => {
     }
 };
 
-export const updateNote = async (note, authToken) => {
+export const updateNote = async (noteId,note, authToken) => {
     try {
-        const response = await axios.post(`/api/user/notes/${note._id}`,
+        const response = await axios.post(`/api/user/notes/${noteId}`,
             { note },
             {
                 headers: { authorization: authToken },
