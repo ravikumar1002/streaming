@@ -40,8 +40,17 @@ This folder contains the Mock Backend created for Video Library App. It contains
 
 ## live Link
 
-     [Streaming](https://streaming-player.netlify.app/)
+   [Streaming](https://streaming-player.netlify.app/)
 
 ## Live demo
+
+
+
+
+
+https://user-images.githubusercontent.com/86847625/170031414-4a1c62f4-d06c-4e02-b06c-4cdb110678df.mp4
+
+
+
 
    
