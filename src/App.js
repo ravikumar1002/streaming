@@ -1,6 +1,6 @@
 import { useContext } from "react";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import "react-toastify/dist/ReactToastify.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import "./css/utility.css";
@@ -22,7 +22,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import DataLayer from "./Data-layer";
 import { AsideBar, Header } from "./components/index";
 import { RequiresAuth } from "./pages/auth/components/RequiresAuth";
-import Mockman from "mockman-js";
 
 function App() {
   return (
