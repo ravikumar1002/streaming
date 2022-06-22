@@ -10,7 +10,7 @@
 }
 
 .aside-container {
-  height: 100vh;
+  height: calc(100vh - 4.5rem);
   position: sticky;
   top: 4.5rem;
 }

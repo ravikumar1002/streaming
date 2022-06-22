@@ -1,6 +1,6 @@
 import { useContext } from "react";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.min.css";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import "./css/utility.css";
