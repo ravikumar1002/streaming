@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
-// import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const SignUp = () => {
     const location = useLocation();

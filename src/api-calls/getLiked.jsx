@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 export const getLiked = async (token) => {
     try {
@@ -30,12 +30,12 @@ export const postLiked = async (likedVideo, authToken) => {
         );
 
         if (response.status === 200 || response.status === 201) {
-            // toast.success("Added In Liked")
+            toast.success("Added In Liked")
             return response.data
         }
     } catch (error) {
         console.log(error);
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         throw error
     }
 };
@@ -50,11 +50,11 @@ export const deleteLiked = async (deleteVideoId, authToken) => {
         );
 
         if (response.status === 200 || response.status === 201) {
-            // toast.success("Removed from Liked")
+            toast.success("Removed from Liked")
             return response.data
         }
     } catch (error) {
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         console.log(error);
         throw error
     }

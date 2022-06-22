@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 export const getNotes = async (authToken) => {
     try {
@@ -11,7 +11,7 @@ export const getNotes = async (authToken) => {
         }
     } catch (e) {
         console.log(error);
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         throw error
     }
 };
@@ -26,12 +26,12 @@ export const addNewNote = async (note, authToken) => {
             }
         );
         if (response.status === 200 || response.status === 201) {
-            // toast.success("Note added!")
+            toast.success("Note added!")
             return response.data
         }
     } catch (e) {
         console.log(error);
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         throw error
     }
 };
@@ -42,12 +42,12 @@ export const deleteNote = async (noteId, authToken) => {
             headers: { authorization: authToken },
         });
         if (response.status === 200 || response.status === 201) {
-            // toast.success("Note deleted")
+            toast.success("Note deleted")
             return response.data
         }
     } catch (e) {
         console.log(error);
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         throw error
     }
 };
@@ -61,12 +61,12 @@ export const updateNote = async (noteId,note, authToken) => {
             }
         );
         if (response.status === 200 || response.status === 201) {
-            // toast.success("Note Updated")
+            toast.success("Note Updated")
             return response.data
         }
     } catch (e) {
         console.log(error);
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         throw error
     }
 };

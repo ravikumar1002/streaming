@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 export const getWatchLater = async (authToken) => {
     try {
@@ -29,11 +29,11 @@ export const postWatchLaterVideo = async (authToken, watchLatervideo) => {
         });
 
         if (response.status === 200 || response.status === 201) {
-            // toast.success("Added in Watchlater")
+            toast.success("Added in Watchlater")
             return response.data
         }
     } catch (error) {
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         console.log(error);
         throw error
     }
@@ -48,11 +48,11 @@ export const deleteWatchLaterVideo = async (authToken, watchLatervideoId) => {
         });
 
         if (response.status === 200 || response.status === 201) {
-            // toast.success("Deleted From Watchlater")
+            toast.success("Deleted From Watchlater")
             return response.data
         }
     } catch (error) {
-        // toast.error("Something went wrong")
+        toast.error("Something went wrong")
         console.log(error);
         throw error
     }
