@@ -16,17 +16,45 @@ export const PlayList = () => {
     }, [])
 
     return (
-        <div className="playlist-page">
-            {userDataState.playlist.length > 0 && <div className="playlist-card-wrapper grid-layout " >
-                {userDataState.playlist.map((videoPlaylist) => {
-                    return (
-                        <div key={videoPlaylist._id}>
-                            <Link to={`/playlist/${videoPlaylist._id}`} className="text-decoration-none"><PlaylistCard videoPlaylist={videoPlaylist} deletePlaylistFromServer={deletePlaylistFromServer} token={token} userDataDispatch={userDataDispatch} /></Link>
-                        </div>
-                    )
-                })}
-            </div>}
-            {userDataState.playlist.length === 0 && <EmptyPage emptyText={"Your playlist is Empty"} btnText={"Start Explore"} linkRoute={"/videos"} />}
+        <div
+            className={`${userDataState.playlist.length === 0 ? "m-2 p-1" : "m-2 p-1"
+                }`}
+        >
+            <div className="flex-space-between ">
+                <div>
+                    <h2>All Playlists</h2>
+                </div>
+            </div>
+            <div className="playlist-page">
+                {userDataState.playlist.length > 0 && (
+                    <div className="playlist-card-wrapper grid-layout ">
+                        {userDataState.playlist.map((videoPlaylist) => {
+                            return (
+                                <div key={videoPlaylist._id}>
+                                    <Link
+                                        to={`/playlist/${videoPlaylist._id}`}
+                                        className="text-decoration-none"
+                                    >
+                                        <PlaylistCard
+                                            videoPlaylist={videoPlaylist}
+                                            deletePlaylistFromServer={deletePlaylistFromServer}
+                                            token={token}
+                                            userDataDispatch={userDataDispatch}
+                                        />
+                                    </Link>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+                {userDataState.playlist.length === 0 && (
+                    <EmptyPage
+                        emptyText={"Your playlists is empty"}
+                        btnText={"Start Explore"}
+                        linkRoute={"/videos"}
+                    />
+                )}
+            </div>
         </div>
-    )
+    );
 }

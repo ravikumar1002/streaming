@@ -31,24 +31,13 @@ export const Header = () => {
     }, []);
 
     return (
-        <header className="flex-space-around p-2 header">
+        <header className="flex-between p-2 header">
             <div className="inline-centre">
                 <h2>
                     <Link to="/videos" className="nav-text-primary text-decoration-none">
                         <i>Streaming</i>
                     </Link>
                 </h2>
-            </div>
-            <div className="search-input-wrapper search-bar ">
-                <span className="input-search nav-input-width">
-                    <span className="fas fa-search input-search-icon"></span>
-                    <input
-                        type="search"
-                        className="input-search-input"
-                        placeholder="Search"
-                    />
-                </span>
-
             </div>
             <nav  className="container" ref={container}>
                 <ul className="horizontal-align-centre nav-text-primary">

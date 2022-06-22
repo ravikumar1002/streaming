@@ -23,15 +23,22 @@ export const Liked = () => {
     }, [])
 
     return (
-        <div style={{height: "100%"}}>
-            {userDataState.liked.length > 0 && <div className="grid-layout">
-                {userDataState.liked.map((video) => {
-                    return (
-                        <VideoCard video={video} key={video._id} />
-                    )
-                })}
-            </div>}
-            {userDataState.liked.length === 0 && <EmptyPage emptyText={"Your Likes is Empty"} btnText={"Start Explore"} linkRoute={"/videos"} />}
-        </div>
+        <div className={`${userDataState.liked.length === 0 ? "m-2 p-1" : "m-2 p-1"}`}>
+            <div className="flex-space-between ">
+                <div>
+                    <h2>All Likes</h2>
+                </div>
+            </div>
+            <div className={`p-2 d-flex gap-2 ${userDataState.liked.length > 0 ? "grid-layout" : ""}`}>
+                {userDataState.liked.length > 0 && <div className="grid-layout">
+                    {userDataState.liked.map((video) => {
+                        return (
+                            <VideoCard video={video} key={video._id} />
+                        )
+                    })}
+                </div>}
+                {userDataState.liked.length === 0 && <EmptyPage emptyText={"Your likes is empty"} btnText={"Start Explore"} linkRoute={"/videos"} />}
+            </div>
+        </ div>
     )
 }

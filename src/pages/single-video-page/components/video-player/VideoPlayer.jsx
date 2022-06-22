@@ -26,6 +26,7 @@ export const VideoPlayer = ({ video, currentVideoRef }) => {
                 controls
                 width="100%"
                 height="90%"
+                playing={true}
                 className='react-player currentVideoRef'
                 onStart={() => {
                     if (token) addVideoInHistory(video, token, userDataDispatch);
