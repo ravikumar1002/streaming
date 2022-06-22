@@ -45,7 +45,6 @@ function App() {
                 path="/videos/:singlevideoid"
                 element={<SingleVideoPage />}
               />
-              <Route path="/mockman" element={<Mockman />} />
               <Route
                 path="/playlist"
                 element={
