@@ -1,7 +1,7 @@
 import { useContext } from "react";
 // import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
 import "./App.css";
 import "./css/utility.css";
 import {
@@ -28,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <DataLayer>
-        <ToastContainer position="top-right" autoClose={700} draggable />
+        {/* <ToastContainer position="top-right" autoClose={700} draggable /> */}
         <div className="header-wrapper">
           <Header />
         </div>

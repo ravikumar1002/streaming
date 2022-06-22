@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../../../context/auth-context";
 import { addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked } from "../../../../services"
 import { useUserData } from "../../../../context/user-data-context";
-import {  toast } from 'react-toastify';
+// import {  toast } from 'react-toastify';
 
 export const VideoPlayerMenu = ({ currentVideo, setShowPlaylistModal }) => {
     const { token } = useAuth();
@@ -25,7 +25,7 @@ export const VideoPlayerMenu = ({ currentVideo, setShowPlaylistModal }) => {
                         if (token) {
                             addVideoInLiked(token, currentVideo, userDataDispatch);
                         } else {
-                            toast.error("You are not logged in")
+                            // toast.error("You are not logged in")
                         }
                     }}>
                         <i className="fa-regular fa-heart"></i>
@@ -43,7 +43,7 @@ export const VideoPlayerMenu = ({ currentVideo, setShowPlaylistModal }) => {
                     if (token) {
                         addVideoInWatchLater(token, currentVideo, userDataDispatch);
                     } else {
-                        toast.error("You are not logged in")
+                        // toast.error("You are not logged in")
                     }
                 }}>
                     <i className="fa-regular fa-clock"></i>
@@ -54,7 +54,7 @@ export const VideoPlayerMenu = ({ currentVideo, setShowPlaylistModal }) => {
                 if (token) {
                     setShowPlaylistModal(true);
                 } else {
-                    toast.error("You are not logged in")
+                    // toast.error("You are not logged in")
                 }
             }}>
                 <i className="fa-solid fa-list-ul"></i>

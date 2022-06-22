@@ -39,7 +39,9 @@ export const UserInputNotesForm = ({ currentVideoRef, id, editNote, editValue, }
                 );
             setNotesInput({ ...defaultValue })
 
-        } else toast.info("Please login to add Note!");
+        } else {
+            // toast.info("Please login to add Note!");
+        }
     };
 
     const updateNoteHandler = () => {

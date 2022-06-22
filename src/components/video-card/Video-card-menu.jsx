@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useAuth } from "../../context/auth-context";
 import { useUserData } from "../../context/user-data-context";
 import { addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked } from "../../services"
-import {  toast } from 'react-toastify';
+// import {  toast } from 'react-toastify';
 
 export const VideoCardMenu = ({ item, playlistState }) => {
     const { userDataState, userDataDispatch } = useUserData();
@@ -49,7 +49,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                     if (token) {
                                         deleteVideoFromLiked(token, item._id, userDataDispatch);
                                     } else {
-                                        toast.error("You are not logged in")
+                                        // toast.error("You are not logged in")
                                     }
                                 }}
                             >
@@ -63,7 +63,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                         addVideoInLiked(token, item, userDataDispatch);
                                         setOpen(false);
                                     } else {
-                                        toast.error("You are not logged in")
+                                        // toast.error("You are not logged in")
                                     }
                                 }}
                             >
@@ -90,7 +90,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                         addVideoInWatchLater(token, item, userDataDispatch);
                                         setOpen(false);
                                     } else {
-                                        toast.error("You are not logged in")
+                                        // toast.error("You are not logged in")
                                     }
                                 }}
                             >
@@ -105,7 +105,7 @@ export const VideoCardMenu = ({ item, playlistState }) => {
                                     playlistState(true);
                                     setOpen(false);
                                 } else {
-                                    toast.error("You are not logged in")
+                                    // toast.error("You are not logged in")
                                 }
                             }}
                         >

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 
 export const getHistory = async (token) => {
@@ -49,11 +49,11 @@ export const deleteHistory = async (deleteVideoId, authToken) => {
         );
 
         if (response.status === 200 || response.status === 201) {
-            toast.success(`History Deleted successful`);
+            // toast.success(`History Deleted successful`);
             return response.data
         }
     } catch (error) {
-        toast.error(error?.response?.data?.errors)
+        // toast.error(error?.response?.data?.errors)
         console.log(error);
         throw error
     }
@@ -68,7 +68,7 @@ export const deleteAllHistory = async (authToken) => {
         );
 
         if (response.status === 200 || response.status === 201) {
-            toast.success(`All History Deleted`);
+            // toast.success(`All History Deleted`);
             return response.data
         }
     } catch (error) {
