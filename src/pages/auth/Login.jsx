@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
 import { useUserData } from "../../context/user-data-context";
+import { useDocumentTitle } from "../../hooks/useDocumentTilte";
 export const Login = () => {
     const location = useLocation();
     const { userlogin } = useAuth();
@@ -10,7 +11,7 @@ export const Login = () => {
         email: "",
         password: "",
     }
-    const {userDataState, userDataDispatch}  = useUserData()
+    const { userDataState, userDataDispatch } = useUserData()
     const [loginDetail, setloginDetail] = useState({ ...defaultLoginValue });
     const [showPassWord, setShowPassword] = useState(false);
 
@@ -27,6 +28,11 @@ export const Login = () => {
             };
         });
     };
+
+    useEffect(() => {
+        useDocumentTitle("Login")
+    }, [])
+
     return (
         <div>
             <main className="flex-center">
@@ -34,10 +40,10 @@ export const Login = () => {
                     <form
                         action=""
                         className="auth-wrapper"
-                        onSubmit={ async(e) => {
+                        onSubmit={async (e) => {
                             e.preventDefault();
                             const data = await userlogin(loginDetail, location);
-                             userDataDispatch({
+                            userDataDispatch({
                                 type: "login",
                                 payload: {
                                     loginData: data.foundUser
@@ -103,6 +109,24 @@ export const Login = () => {
                         <div className="text-center mt-1">
                             <button className="btn-sm border-squre form-submit btn-block" type="submit">
                                 Login
+                            </button>
+                        </div>
+                        <div className="text-center mt-1">
+                            <button className="btn-sm border-squre form-submit btn-block" type="submit" onClick={async(e) => {
+                                e.preventDefault();
+                                const data = await userlogin({
+                                    email: "ravikumar@gmail.com",
+                                    password: "ravikumar",
+                                }, location);
+                                userDataDispatch({
+                                    type: "login",
+                                    payload: {
+                                        loginData: data.foundUser
+                                    }
+                                })
+                                setloginDetail({ ...defaultLoginValue })
+                            }}>
+                                Guest Login
                             </button>
                         </div>
                         <div className="text-center mt-1">

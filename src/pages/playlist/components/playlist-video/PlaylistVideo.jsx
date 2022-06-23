@@ -7,6 +7,10 @@ export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
     const { userDataState, userDataDispatch } = useUserData()
     const { token } = useAuth()
 
+    const sortDescription = (description) => {
+        return description.slice(0,40)+ "..."
+    }
+
 
     return (
         <div>
@@ -21,7 +25,7 @@ export const PlaylistVideo = ({ video, playlistIdForVideo }) => {
                     }}></span>
                 </div>
                 <div>
-                    <p className="fs-x-sm">{video.description}</p>
+                    <small className="fs-x-sm">{sortDescription(video.description)}</small>
                 </div>
             </Link>
             

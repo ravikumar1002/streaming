@@ -1,5 +1,4 @@
 @import url(./css//main.css);
-/* @import url(react-loader-spinner/dist/loader/css/react-spinner-loader.css); */
 
 .header-wrapper {
   top: 0;
@@ -10,7 +9,7 @@
 }
 
 .aside-container {
-  height: 100vh;
+  height: calc(100vh - 4.5rem);
   position: sticky;
   top: 4.5rem;
 }

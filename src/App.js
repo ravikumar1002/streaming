@@ -22,7 +22,6 @@ import { Routes, Route, Link } from "react-router-dom";
 import DataLayer from "./Data-layer";
 import { AsideBar, Header } from "./components/index";
 import { RequiresAuth } from "./pages/auth/components/RequiresAuth";
-import Mockman from "mockman-js";
 
 function App() {
   return (
@@ -46,7 +45,6 @@ function App() {
                 path="/videos/:singlevideoid"
                 element={<SingleVideoPage />}
               />
-              <Route path="/mockman" element={<Mockman />} />
               <Route
                 path="/playlist"
                 element={

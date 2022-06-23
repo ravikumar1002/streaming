@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useUserData } from "../../context/user-data-context"
 import { PlaylistVideo } from "./components/playlist-video/PlaylistVideo"
 import { EmptyPage } from "../../components/empty-page/EmptyPage"
+import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 
 export const SinglePlaylistPage = () => {
     const { playlistid } = useParams()
@@ -13,12 +14,17 @@ export const SinglePlaylistPage = () => {
 
     const getVideosInPlaylist = (allPlaylist, playlistID) => {
         const inPlaylistVideo = allPlaylist.find((playlist) => playlist._id === playlistID);
+        console.log(inPlaylistVideo)
         setVideoInCurrentPlaylist(inPlaylistVideo)
     }
 
     useEffect(() => {
         getVideosInPlaylist(userDataState.playlist, playlistid)
     }, [userDataState.playlist])
+
+    useEffect(() => {
+         useDocumentTitle(videosInCurrentPlaylist?.title)
+    }, [])
 
     return (
         <div style={{ height: "100%" }}>

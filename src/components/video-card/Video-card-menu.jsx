@@ -4,12 +4,10 @@ import { useUserData } from "../../context/user-data-context";
 import { addVideoInWatchLater, deleteVideoFromWatchLater, addVideoInLiked, deleteVideoFromLiked } from "../../services"
 import {  toast } from 'react-toastify';
 
-export const VideoCardMenu = ({ item, playlistState }) => {
+export const VideoCardMenu = ({ item, playlistState, setOpen, open}) => {
     const { userDataState, userDataDispatch } = useUserData();
     const { token } = useAuth();
-    const [open, setOpen] = useState(false);
     const container = useRef();
-
 
     const findExistsOrNot = (state, value) => {
         return state.find(video => video._id === value) ? true : false

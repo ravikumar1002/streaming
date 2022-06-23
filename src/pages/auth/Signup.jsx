@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
-// import { ToastContainer, toast } from 'react-toastify';
+import { useDocumentTitle } from "../../hooks/useDocumentTilte";
 
 export const SignUp = () => {
     const location = useLocation();
@@ -48,6 +48,10 @@ export const SignUp = () => {
         matchpassword()
     }, [signupDetail.confirmPassword])
 
+    useEffect(() => {
+        useDocumentTitle("Signup")
+    }, [])
+
     return (
         <div>
             <main className="flex-center">
@@ -58,7 +62,6 @@ export const SignUp = () => {
                         onSubmit={async (e) => {
                             e.preventDefault();
                             await userSignUp(signupDetail, location);
-                            // sucessSignIn()
                             setSignupDetail(emptyField)
                         }}
                     >

@@ -1,7 +1,8 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useVideoDataFromServer } from "../../context/video-context"
 import { useUserData } from "../../context/user-data-context"
 import "./upload.css"
+import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 export const UploadVideo = () => {
 
     const { userDataState, userDataDispatch } = useUserData()
@@ -41,6 +42,10 @@ export const UploadVideo = () => {
         const match = url.match(regExp);
         return match && match[7].length == 11 ? match[7] : false;
     }
+
+    useEffect(() => {
+        useDocumentTitle("Upload")
+   }, [])
 
 
     return (

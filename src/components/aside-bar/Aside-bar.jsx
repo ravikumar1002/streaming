@@ -20,36 +20,36 @@ export const AsideBar = () => {
     return (
         <div className="aside-bar-wrapper">
             <nav className="aside-bar">
-                <NavLink style={getActiveStyle} to="videos">
+                <NavLink style={getActiveStyle} to="videos" title="Explore">
                     <span>
                         <i className="fa-solid fa-house"></i>
                     </span>
                 </NavLink>
 
-                <NavLink style={getActiveStyle} to="/history">
+                <NavLink style={getActiveStyle} to="/history" title="History">
                     <span>
                         <i className="fa-solid fa-clock-rotate-left"></i>
                     </span>
                 </NavLink>
 
-                <NavLink style={getActiveStyle} to="/liked">
+                <NavLink style={getActiveStyle} to="/liked" title="Liked">
                     <span>
                         <i className="fa-solid fa-heart"></i>
                     </span>
                 </NavLink>
 
-                <NavLink style={getActiveStyle} to="/watchlater">
+                <NavLink style={getActiveStyle} to="/watchlater" title="WatchLater">
                     <span>
                         <i className="fa-solid fa-clock"></i>
                     </span>
                 </NavLink>
 
-                <NavLink style={getActiveStyle} to="/PlayList">
+                <NavLink style={getActiveStyle} to="/PlayList" title="Playlist">
                     <span>
                         <i className="fa-solid fa-list-ul"></i>
                     </span>
                 </NavLink>
-                <NavLink style={getActiveStyle} to="/uploadvideo">
+                <NavLink style={getActiveStyle} to="/uploadvideo" title="Upload video">
                     <span>
                         <i className="fa-solid fa-upload"></i>
                     </span>
