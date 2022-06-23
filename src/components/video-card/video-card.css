@@ -1,8 +1,7 @@
-.video-card{
-  transition: all .2s ease-in-out;
-}
+
 
 .video-card:hover {
+  transition: all .2s ease-in-out;
   background-color: whitesmoke;
   transform: scale(1.05);
 }

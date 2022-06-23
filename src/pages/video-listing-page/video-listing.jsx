@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react"
 import { useVideoDataFromServer } from "../../context/video-context"
 import { VideoCard } from "../../components"
-// import { Rings } from  'react-loader-spinner'
 import "./video-listing.css"
 
 export const VideosListing = () => {
     const { videoState } = useVideoDataFromServer()
     const [showPageVideo, setShowPageVideo] = useState([])
+    const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         setShowPageVideo(videoState.allVideos)
@@ -17,11 +17,10 @@ export const VideosListing = () => {
             {showPageVideo.length > 0 ? showPageVideo.map((video) => {
                 return (
                     <div key={video._id}>
-                        <VideoCard video={video} />
+                        <VideoCard video={video} setModalOpen={setModalOpen} modalOpen={modalOpen}/>
                     </div>
                 )
             }) :
-            //  <Rings color="#00BFFF" height={80} width={80} />
              <p>loading..</p>
              }
         </div>
