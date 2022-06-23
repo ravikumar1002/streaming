@@ -2,10 +2,6 @@
   position: relative;
 }
 
-/* .playlist-card-top > div {
-   height: 10rem; 
-} */
-
 .playlist-card-count-section {
   position: absolute;
   top: 0;
@@ -31,4 +27,3 @@
   color: var(--dark);
 }
 
-/* .playlist-card-tilte-section >  */

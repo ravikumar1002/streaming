@@ -1,6 +1,6 @@
 import { useUserData } from "../../context/user-data-context"
 import { getWatchLater } from "../../api-calls"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useAuth } from "../../context/auth-context"
 import { VideoCard } from "../../components/video-card/Video-Card"
 import { EmptyPage } from "../../components/empty-page/EmptyPage"
@@ -8,6 +8,7 @@ export const WatchLater = () => {
 
     const { userDataState, userDataDispatch } = useUserData()
     const { token } = useAuth()
+    const [modalOpen, setModalOpen] = useState(false)
 
     const getAllSavedWatchLaterVideo = async (authToken) => {
         const getWatchLaterData = await getWatchLater(authToken)
@@ -35,7 +36,7 @@ export const WatchLater = () => {
                     {userDataState.watchLater.map((video) => {
                         return (
 
-                            <VideoCard video={video} key={video._id} />
+                            <VideoCard video={video} key={video._id} setModalOpen={setModalOpen} modalOpen={modalOpen}/>
                         )
                     })}
                 </div>}

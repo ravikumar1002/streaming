@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
 import { useDocumentTitle } from "../../hooks/useDocumentTilte";
-// import { ToastContainer, toast } from 'react-toastify';
 
 export const SignUp = () => {
     const location = useLocation();
@@ -63,7 +62,6 @@ export const SignUp = () => {
                         onSubmit={async (e) => {
                             e.preventDefault();
                             await userSignUp(signupDetail, location);
-                            // sucessSignIn()
                             setSignupDetail(emptyField)
                         }}
                     >

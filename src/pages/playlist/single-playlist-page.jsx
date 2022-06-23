@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useUserData } from "../../context/user-data-context"
 import { PlaylistVideo } from "./components/playlist-video/PlaylistVideo"
 import { EmptyPage } from "../../components/empty-page/EmptyPage"
+import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 
 export const SinglePlaylistPage = () => {
     const { playlistid } = useParams()
@@ -22,7 +23,7 @@ export const SinglePlaylistPage = () => {
     }, [userDataState.playlist])
 
     useEffect(() => {
-
+         useDocumentTitle(videosInCurrentPlaylist?.title)
     }, [])
 
     return (

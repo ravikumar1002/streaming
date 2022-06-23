@@ -1,13 +1,14 @@
 import { useUserData } from "../../context/user-data-context"
 import { useAuth } from "../../context/auth-context"
 import { getLiked } from "../../api-calls"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { VideoCard } from "../../components"
 import { EmptyPage } from "../../components/empty-page/EmptyPage"
 import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 export const Liked = () => {
     const { userDataState, userDataDispatch } = useUserData()
     const { token } = useAuth()
+    const [modalOpen, setModalOpen] = useState(false)
 
     const getAllLikedVideos = async (authToken) => {
         const getLikedVideoData = await getLiked(authToken)
@@ -36,7 +37,7 @@ export const Liked = () => {
                 {userDataState.liked.length > 0 && <div className="grid-layout">
                     {userDataState.liked.map((video) => {
                         return (
-                            <VideoCard video={video} key={video._id} />
+                            <VideoCard video={video} key={video._id} setModalOpen={setModalOpen} modalOpen={modalOpen}/>
                         )
                     })}
                 </div>}

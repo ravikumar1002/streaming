@@ -24,7 +24,7 @@ export const VideoCard = ({ video, history, modalOpen, setModalOpen }) => {
 
     return (
         <div className={` ${modalOpen ? "" : "video-card"}  ${history ? "pos-rel" : ""}`}>
-            <Link to={`/videos/${video._id}`} className="video-card-link">
+            <Link to={`/videos/${video._id}`} className="video-card-link" title={video.title} >
                 <div className="video-card-img">
                     <VideoCardImg id={video._id} title={video.title} />
                 </div>
