@@ -13,12 +13,17 @@ export const SinglePlaylistPage = () => {
 
     const getVideosInPlaylist = (allPlaylist, playlistID) => {
         const inPlaylistVideo = allPlaylist.find((playlist) => playlist._id === playlistID);
+        console.log(inPlaylistVideo)
         setVideoInCurrentPlaylist(inPlaylistVideo)
     }
 
     useEffect(() => {
         getVideosInPlaylist(userDataState.playlist, playlistid)
     }, [userDataState.playlist])
+
+    useEffect(() => {
+
+    }, [])
 
     return (
         <div style={{ height: "100%" }}>

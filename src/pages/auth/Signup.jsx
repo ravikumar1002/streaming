@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
+import { useDocumentTitle } from "../../hooks/useDocumentTilte";
 // import { ToastContainer, toast } from 'react-toastify';
 
 export const SignUp = () => {
@@ -47,6 +48,10 @@ export const SignUp = () => {
     useEffect(() => {
         matchpassword()
     }, [signupDetail.confirmPassword])
+
+    useEffect(() => {
+        useDocumentTitle("Signup")
+    }, [])
 
     return (
         <div>

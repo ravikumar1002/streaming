@@ -4,6 +4,7 @@ import { getLiked } from "../../api-calls"
 import { useEffect } from "react"
 import { VideoCard } from "../../components"
 import { EmptyPage } from "../../components/empty-page/EmptyPage"
+import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 export const Liked = () => {
     const { userDataState, userDataDispatch } = useUserData()
     const { token } = useAuth()
@@ -20,7 +21,9 @@ export const Liked = () => {
 
     useEffect(() => {
         getAllLikedVideos(token)
+        useDocumentTitle("Liked")
     }, [])
+
 
     return (
         <div className={`${userDataState.liked.length === 0 ? "m-2 p-1" : "m-2 p-1"}`}>

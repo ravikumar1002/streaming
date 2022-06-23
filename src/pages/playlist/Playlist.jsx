@@ -6,6 +6,7 @@ import { PlaylistCard } from "./components"
 import { Link } from "react-router-dom"
 import "./playlist.css"
 import { EmptyPage } from "../../components/empty-page/EmptyPage"
+import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 export const PlayList = () => {
     const { userDataState, userDataDispatch, } = useUserData()
 
@@ -13,7 +14,10 @@ export const PlayList = () => {
 
     useEffect(() => {
         getAllPlaylistFromServer(token, userDataDispatch)
+        useDocumentTitle("Playlist")
     }, [])
+
+    
 
     return (
         <div

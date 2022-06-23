@@ -4,9 +4,10 @@ import { useVideoDataFromServer } from "../../context/video-context"
 import { VideoPlayer, VideoPlayerCentre, SignglePlayerFooter } from './components/video-player';
 import { VideoCard } from "../../components";
 import { UserInputNotesForm } from "./components/notes/UserInputNotesForm";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { SaveNotes } from "./components/notes/SaveNotes";
 import { useUserData } from "../../context/user-data-context";
+import { useDocumentTitle } from "../../hooks/useDocumentTilte";
 
 export const SingleVideoPage = () => {
 
@@ -18,6 +19,11 @@ export const SingleVideoPage = () => {
     const currentVideo = videoState.allVideos.find(videos => videos._id === singlevideoid)
     const categoryVideo = videoState.allVideos.filter(category => currentVideo.category === category.category && currentVideo._id !== category._id)
     const notes = userDataState?.notes.filter((note) => note.id === singlevideoid).sort((a, b) => b.noteCreatedTime - a.noteCreatedTime);
+
+    useEffect(() => {
+        useDocumentTitle(currentVideo.title)
+    },[])
+
     return (
         <div className="single-video-wrapper">
             {

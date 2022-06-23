@@ -1,3 +1,11 @@
+.video-card{
+  transition: all .2s ease-in-out;
+}
+
+.video-card:hover {
+  background-color: whitesmoke;
+  transform: scale(1.05);
+}
 
 .video-card-content {
   display: flex;
@@ -32,11 +40,6 @@
 .toggle-video-menu > div {
   margin: 0.5rem 0rem;
 }
-
-/* .video-card-img {
-  max-width: 20rem;
-  max-height: 15rem;
-} */
 
 .toggle-video-menu > div {
   margin: 0.5rem 0;

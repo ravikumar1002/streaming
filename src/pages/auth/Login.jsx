@@ -1,8 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./auth.css";
 import { useAuth } from "../../context/auth-context";
 import { useUserData } from "../../context/user-data-context";
+import { useDocumentTitle } from "../../hooks/useDocumentTilte";
 export const Login = () => {
     const location = useLocation();
     const { userlogin } = useAuth();
@@ -27,6 +28,11 @@ export const Login = () => {
             };
         });
     };
+
+    useEffect(() => {
+        useDocumentTitle("Login")
+    }, [])
+
     return (
         <div>
             <main className="flex-center">

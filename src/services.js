@@ -211,7 +211,7 @@ const deleteAllHistoryFromServer = async (authToken, userDataDispatch) => {
   });
 };
 
-const getALlNotes = async(authToken) => {
+const getALlNotes = async (authToken) => {
   const getNoteVideoInServer = await getNotes(authToken);
   userDataDispatch({
     type: "NOTES",
@@ -219,7 +219,7 @@ const getALlNotes = async(authToken) => {
       notes: getNoteVideoInServer.notes,
     },
   });
-}
+};
 
 const addNotesInVideo = async (note, authToken, userDataDispatch) => {
   const saveNoteVideoInServer = await addNewNote(note, authToken);
@@ -241,8 +241,13 @@ const deleteNotesInVideo = async (noteId, authToken, userDataDispatch) => {
   });
 };
 
-const updateNotesInVideo = async (noteId, note,  authToken, userDataDispatch) => {
-  const UpdateNoteVideoInServer = await updateNote(noteId,note, authToken);
+const updateNotesInVideo = async (
+  noteId,
+  note,
+  authToken,
+  userDataDispatch
+) => {
+  const UpdateNoteVideoInServer = await updateNote(noteId, note, authToken);
   userDataDispatch({
     type: "NOTES",
     payload: {
@@ -250,8 +255,6 @@ const updateNotesInVideo = async (noteId, note,  authToken, userDataDispatch) =>
     },
   });
 };
-
-
 
 export {
   addVideoInWatchLater,

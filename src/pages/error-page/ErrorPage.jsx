@@ -1,8 +1,14 @@
 import errorImg from "../../assets/error-img.png"
 import { Link } from "react-router-dom"
 import "./error-page.css"
+import { useDocumentTitle } from "../../hooks/useDocumentTilte"
+import { useEffect } from "react"
 
 export const ErrorPage = () => {
+    
+    useEffect(() => {
+        useDocumentTitle("Error")
+    }, [])
 
     return (
         <div className="text-center mt-4">

@@ -4,6 +4,7 @@ import { useUserData } from "../../context/user-data-context"
 import { getAllVideoHistory, deleteAllHistoryFromServer } from "../../services"
 import { VideoCard } from "../../components"
 import { EmptyPage } from "../../components/empty-page/EmptyPage"
+import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 
 export const History = () => {
     const { token } = useAuth()
@@ -11,7 +12,9 @@ export const History = () => {
 
     useEffect(() => {
         getAllVideoHistory(token, userDataDispatch)
+        useDocumentTitle("History")
     }, [])
+
 
     return (
         <div className={`${userDataState.history.length === 0 ? "m-2 p-1" : "m-2 p-1"}`}>
