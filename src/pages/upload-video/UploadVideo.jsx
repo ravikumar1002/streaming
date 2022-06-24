@@ -19,7 +19,7 @@ export const UploadVideo = () => {
         creator: "",
         uploadDate: "",
         url: "",
-        notes:[],
+        notes: [],
     })
 
     const initalvalue = {
@@ -30,7 +30,7 @@ export const UploadVideo = () => {
         creator: "",
         uploadDate: "",
         url: "",
-        notes:[],
+        notes: [],
     }
 
     const inputValue = (key, value) => {
@@ -51,7 +51,6 @@ export const UploadVideo = () => {
     useEffect(() => {
         useDocumentTitle("Upload")
     }, [])
-
 
     return (
         <div className="upload-form-wrapper ">
@@ -74,7 +73,9 @@ export const UploadVideo = () => {
             }}>
                 <div>
                     <label htmlFor="url">Enter Video Url</label>
-                    <input required type="text" placeholder="https://youtu.be/ video link" value={video.url} id="url" onChange={(e) => inputValue("url", e.target.value)} />
+                    <input required type="text" placeholder="https://youtu.be/ video link" value={video.url} id="url" onChange={(e) => {
+                        inputValue("url", e.target.value)
+                    }} />
                 </div>
                 <div>
                     <label htmlFor="title">Enter Video Title</label>
@@ -92,15 +93,33 @@ export const UploadVideo = () => {
                     <label htmlFor="description">Enter Video Description</label>
                     <textarea required name="description" id="description" placeholder="Description" value={video.description} onChange={(e) => inputValue("description", e.target.value)} cols="10" rows="2"></textarea>
                 </div>
-                <button type="submit" className="w-100 btn-block btn-primary border-squre btn-sm" onClick={() => {
-                    setVideo((prev) => {
-                        return {
-                            ...prev,
-                            _id: getId(video.url),
-                            uploadDate: getDate(),
-                        }
-                    })
-                }}>Submit</button>
+                <div style={{ display: "flex", justifyContent: "right" }}>
+                    <button className="btn-primary border-squre btn-sm" onClick={(e) => {
+                        e.preventDefault()
+                        setVideo((prev) => {
+                            return {
+                                ...prev,
+                                title: "World's Most Powerful Gaming Tablet !",
+                                category: "Tech",
+                                description: "Gaming ka Asli Khiladi !",
+                                creator: "Tech Burner",
+                                url: "https://www.youtube.com/watch?v=UxWTwyCRT0E",
+                                notes: [],
+                            }
+                        })
+                    }}>Demo Fill</button>
+
+                    <button type="submit" className=" btn-primary border-squre btn-sm" onClick={() => {
+                        setVideo((prev) => {
+                            return {
+                                ...prev,
+                                _id: getId(video.url),
+                                uploadDate: getDate(),
+                            }
+                        })
+                    }}>Upload</button>
+                </div>
+
             </form>
         </div>
     )
