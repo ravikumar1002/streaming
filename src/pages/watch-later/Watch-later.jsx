@@ -32,7 +32,7 @@ export const WatchLater = () => {
                 </div>
             </div>
             <div className={`p-2 d-flex gap-2 ${userDataState.watchLater.length > 0 ? "grid-layout" : ""}`}>
-                {userDataState.watchLater.length > 0 && <div className="grid-layout">
+                {userDataState.watchLater.length > 0 && <div>
                     {userDataState.watchLater.map((video) => {
                         return (
 

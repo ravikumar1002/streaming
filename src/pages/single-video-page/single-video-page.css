@@ -28,10 +28,9 @@
   font-size: 1.2rem;
 }
 
-
 .player-wrapper {
   position: relative;
-  padding-top: 56.25%; 
+  padding-top: 56.25%;
 }
 
 .react-player {
@@ -40,16 +39,20 @@
   left: 0;
 }
 
-.note-input-wrapper{
+.note-input-wrapper {
   padding: 1rem;
   background: var(--light-white-bg);
   border-radius: 5px;
+  max-width: 21rem;
+  min-width: 21rem;
 }
-
 
 @media (max-width: 1024px) {
   .single-video-wrapper {
     flex-direction: column;
   }
+  .note-input-wrapper {
+    max-width: 100%;
+    min-width: 100%;
+  }
 }
-

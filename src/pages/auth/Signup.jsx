@@ -52,6 +52,47 @@ export const SignUp = () => {
         useDocumentTitle("Signup")
     }, [])
 
+
+    const checkALlInput = () => {
+        const isAllFieldIsFill = {
+            name: false,
+            email: false,
+            password: false,
+        }
+
+        const checkEmail = (email) => {
+            if (email.includes("@")) {
+                const emailData = email.split('@')
+                if (emailData[0].length > 0 && emailData[1].length > 0) {
+                    return true
+                }
+            }
+            return false
+        }
+
+        if (signupDetail.name.length > 0) {
+            isAllFieldIsFill.name = true
+        } else {
+            isAllFieldIsFill.name = false
+        }
+
+        if (signupDetail.email.length > 0 && checkEmail(signupDetail.email)) {
+            isAllFieldIsFill.email = true
+        } else {
+            isAllFieldIsFill.email = false
+        }
+        if (signupDetail.confirmPassword === signupDetail.password) {
+            isAllFieldIsFill.password = true
+        } else {
+            isAllFieldIsFill.password = false
+        }
+
+        if (isAllFieldIsFill.name && isAllFieldIsFill.email && isAllFieldIsFill.password) {
+            return true
+        }
+        return false
+    }
+
     return (
         <div>
             <main className="flex-center">
@@ -82,6 +123,8 @@ export const SignUp = () => {
                                 onChange={(e) => {
                                     setValue("name", e.target.value);
                                 }}
+                                data-error="Name is empty"
+                                title="Name"
                             />
                         </div>
                         <div className="flex-col">
@@ -101,104 +144,104 @@ export const SignUp = () => {
                             />
                         </div>
                         <div className="flex-col">
-                            <label htmlFor="password" className="flex-between">
+                            <label htmlFor="password">
                                 <span>
                                     Password <span className="require-star">*</span>
                                 </span>
+                            </label>
+                            <div className="flex-between" style={{ position: "relative" }}>
+                                <input
+                                    type={showPassWord.password ? "text" : "password"}
+                                    id="password"
+                                    className="fs-sm input-padding w-100"
+                                    style={{ paddingRight: "3rem" }}
+                                    required
+                                    value={signupDetail.password}
+                                    autoComplete="off"
+                                    onChange={(e) => {
+                                        setValue("password", e.target.value);
+                                    }}
+                                />
                                 {showPassWord.password ? (
                                     <span
-                                        className="mr-3 fa fa-eye"
+                                        className="mr-3 fa fa-eye show-password-icon"
                                         onClick={(e) => showPasswordFn(e, "password", false)}
                                     >
                                     </span>
                                 ) : (
                                     <span
-                                        className="mr-3 fa fa-eye-slash"
+                                        className="mr-3 fa fa-eye-slash show-password-icon"
                                         onClick={(e) => showPasswordFn(e, "password", true)}
                                     >
                                     </span>
                                 )}
-                            </label>
-                            <input
-                                type={showPassWord.password ? "text" : "password"}
-                                id="password"
-                                className="fs-sm input-padding"
-                                required
-                                value={signupDetail.password}
-                                autoComplete="off"
-                                onChange={(e) => {
-                                    setValue("password", e.target.value);
-                                }}
-                            />
+                            </div>
+
                         </div>
                         <div className={`flex-col ${errorPassword && "input-err"}`}>
                             <label
                                 htmlFor="confirm-password"
-                                className="flex-between"
                             >
                                 <span>
                                     Confirm Password <span className="require-star">*</span>
                                 </span>
+                            </label>
+                            <div className="flex-between" style={{ position: "relative" }}>
+                                <input
+                                    type={showPassWord.confirmPassword ? "text" : "password"}
+                                    id="confirm-password"
+                                    className={`fs-sm input-padding ${errorPassword && "errorFiled"} w-100`}
+                                    value={signupDetail.confirmPassword}
+                                    required
+                                    style={{ paddingRight: "3rem" }}
+                                    autoComplete="off"
+                                    onChange={(e) => {
+                                        setValue("confirmPassword", e.target.value);
+                                    }}
+                                />
                                 {showPassWord.confirmPassword ? (
                                     <span
-                                        className="mr-3 fa fa-eye"
+                                        className="mr-3 fa fa-eye show-password-icon"
                                         onClick={(e) => showPasswordFn(e, "confirmPassword", false)}
                                     >
                                     </span>
                                 ) : (
                                     <span
-                                        className="mr-3 fa fa-eye-slash"
+                                        className="mr-3 fa fa-eye-slash show-password-icon"
                                         onClick={(e) => showPasswordFn(e, "confirmPassword", true)}
                                     >
                                     </span>
                                 )}
-                            </label>
-                            <input
-                                type={showPassWord.confirmPassword ? "text" : "password"}
-                                id="confirm-password"
-                                className={`fs-sm input-padding ${errorPassword && "errorFiled"}`}
-                                value={signupDetail.confirmPassword}
-                                required
-                                autoComplete="off"
-                                onChange={(e) => {
-                                    setValue("confirmPassword", e.target.value);
-                                }}
-                            />
+                            </div>
                             {errorPassword && <div className="error-msg"> password doesn't match</div>}
                         </div>
-                        <div className="flex-space-between p-0">
-                            <span>
-                                <label htmlFor="remember-me">
-                                    <input
-                                        type="checkbox"
-                                        id="remember-me"
-                                        required
-                                        autoComplete="off"
-                                    />
-                                    <span className="ml-1">
-                                        I accept all Terms & Conditions
-                                        <span className="require-star">*</span>
-                                    </span>
-                                </label>
-                            </span>
-                        </div>
-
                         <div className="text-center mt-1">
-                            <button
-                                className="btn-sm border-squre form-submit btn-block"
-                                type="submit"
-                            >
-                                Create New Account
-                            </button>
+                            {
+                                checkALlInput() ?
+                                    <button
+                                        className="btn-sm border-squre form-submit btn-block"
+                                        type="submit"
+                                    >
+                                        Create New Account
+                                    </button>
+                                    :
+                                    <button
+                                        className="btn-sm border-squre form-submit btn-block"
+                                        style={{ cursor: "not-allowed", opacity: "0.7" }}
+                                        type="submit"
+                                    >
+                                        Create New Account
+                                    </button>
+                            }
+
                         </div>
                         <div className="text-center mt-1">
                             <Link
                                 to="/login"
                                 state={location?.state}
-                                className="btn-icon-text-right text-underline-none centre "
+                                className="btn-icon-text-right  centre "
                             >
                                 Already have an account
-                                <i className="fas fa-angle-right fs-md"></i>
                             </Link>
                         </div>
                     </form>

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useAuth } from "../../context/auth-context"
 import { useUserData } from "../../context/user-data-context"
 import { getAllVideoHistory, deleteAllHistoryFromServer } from "../../services"
@@ -9,6 +9,7 @@ import { useDocumentTitle } from "../../hooks/useDocumentTilte"
 export const History = () => {
     const { token } = useAuth()
     const { userDataState, userDataDispatch } = useUserData()
+    const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         getAllVideoHistory(token, userDataDispatch)
@@ -33,7 +34,7 @@ export const History = () => {
                 {userDataState.history.length > 0 ? userDataState.history.map((history) => {
                     return (
                         <div key={history._id} className="w-100">
-                            <VideoCard video={history} history={true} />
+                            <VideoCard video={history} history={true} setModalOpen={setModalOpen} modalOpen={modalOpen} />
                         </div>
                     )
                 }) : <EmptyPage emptyText={"Your history is empty"} btnText={"Start Explore"} linkRoute={"/videos"} />}

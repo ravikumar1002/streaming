@@ -38,10 +38,16 @@
 }
 
 .auth-wrapper label {
-    font-style: italic;
-    font-weight: 600;
+  font-style: italic;
+  font-weight: 600;
 }
 
-.show-password{
+.show-password-icon {
   position: absolute;
+  right: 0.5rem;
+  display: inline-block;
+  top: 50%;
+  transform: translate(50%, -50%);
+  padding: 0.5rem;
+  z-index: 1;
 }
