@@ -239,10 +239,9 @@ export const SignUp = () => {
                             <Link
                                 to="/login"
                                 state={location?.state}
-                                className="btn-icon-text-right text-underline-none centre "
+                                className="btn-icon-text-right  centre "
                             >
                                 Already have an account
-                                <i className="fas fa-angle-right fs-md"></i>
                             </Link>
                         </div>
                     </form>
