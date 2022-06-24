@@ -15,11 +15,6 @@ export const Login = () => {
     const [loginDetail, setloginDetail] = useState({ ...defaultLoginValue });
     const [showPassWord, setShowPassword] = useState(false);
 
-    const showPasswordFn = (e, passwordType, value) => {
-        e.stopPropagation();
-        setShowPassword((prev) => ({ ...prev, [passwordType]: value }));
-    };
-
     const setValue = (key, value) => {
         setloginDetail((prev) => {
             return {
@@ -32,6 +27,8 @@ export const Login = () => {
     useEffect(() => {
         useDocumentTitle("Login")
     }, [])
+
+    console.log(showPassWord)
 
     return (
         <div>
@@ -76,35 +73,38 @@ export const Login = () => {
                                 }}
                             />
                         </div>
-                        <div className="flex-col">
-                            <label htmlFor="password" className="flex-between">
+                    <div className="flex-col" >
+                            <label htmlFor="password" >
                                 <span>
                                     Password <span className="require-star">*</span>
                                 </span>
-                                {showPassWord.password ? (
+                            </label>
+                            <div className="flex-between" style={{position: "relative"}}>
+                                <input
+                                    type={showPassWord ? "text" : "password"}
+                                    style={{paddingRight: "3rem"}}
+                                    id="password"
+                                    className="fs-sm input-padding w-100"
+                                    value={loginDetail.password}
+                                    required
+                                    autoComplete="off"
+                                    onChange={(e) => {
+                                        setValue("password", e.target.value);
+                                    }}
+                                />
+                                {showPassWord ? (
                                     <span
-                                        className="mr-3 fa fa-eye"
-                                        onClick={(e) => showPasswordFn(e, "password", false)}
+                                        className="mr-3 fa fa-eye show-password-icon"
+                                        onClick={(e) => setShowPassword(false)}
                                     ></span>
                                 ) : (
                                     <span
-                                        className="mr-3 fa fa-eye-slash"
-                                        onClick={(e) => showPasswordFn(e, "password", true)}
+                                        className="mr-3 fa fa-eye-slash show-password-icon"
+                                        onClick={(e) => setShowPassword(true)}
                                     ></span>
                                 )}
-                            </label>
+                            </div>
 
-                            <input
-                                type={showPassWord ? "text" : "password"}
-                                id="password"
-                                className="fs-sm input-padding"
-                                value={loginDetail.password}
-                                required
-                                autoComplete="off"
-                                onChange={(e) => {
-                                    setValue("password", e.target.value);
-                                }}
-                            />
                         </div>
                         <div className="text-center mt-1">
                             <button className="btn-sm border-squre form-submit btn-block" type="submit">
@@ -112,7 +112,7 @@ export const Login = () => {
                             </button>
                         </div>
                         <div className="text-center mt-1">
-                            <button className="btn-sm border-squre form-submit btn-block" type="submit" onClick={async(e) => {
+                            <button className="btn-sm border-squre form-submit btn-block" type="submit" onClick={async (e) => {
                                 e.preventDefault();
                                 const data = await userlogin({
                                     email: "ravikumar@gmail.com",
@@ -133,9 +133,9 @@ export const Login = () => {
                             <Link
                                 to="/signup"
                                 state={location?.state}
-                                className="btn-icon-text-right text-underline-none centre "
+                                className="btn-icon-text-right centre"
                             >
-                                Create New Account <i className="fas fa-angle-right fs-md"></i>
+                                Create New Account
                             </Link>
                         </div>
                     </form>
