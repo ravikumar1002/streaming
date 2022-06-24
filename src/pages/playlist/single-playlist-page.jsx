@@ -28,7 +28,6 @@ export const SinglePlaylistPage = () => {
 
     return (
         <div style={{ height: "100%" }}>
-
             {videosInCurrentPlaylist?.videos.length > 0 && <div  className="grid-layout">
                 {videosInCurrentPlaylist?.videos.map((video) => {
                     return (

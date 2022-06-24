@@ -51,7 +51,7 @@ export const VideoCard = ({ video, history, modalOpen, setModalOpen }) => {
                 history && <div style={{ position: "absolute", top: "5%", right: "5%" }}>
                     <button className="btn-sm btn-danger border-squre" onClick={() => {
                         deleteHistoryFromServer(video._id, token, userDataDispatch)
-                    }}> <i class="fa fa-times"></i></button>
+                    }}> <i className="fa fa-times"></i></button>
                 </div>
 
             }

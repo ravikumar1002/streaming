@@ -34,7 +34,7 @@ export const Liked = () => {
                 </div>
             </div>
             <div className={`p-2 d-flex gap-2 ${userDataState.liked.length > 0 ? "grid-layout" : ""}`}>
-                {userDataState.liked.length > 0 && <div className="grid-layout">
+                {userDataState.liked.length > 0 && <div>
                     {userDataState.liked.map((video) => {
                         return (
                             <VideoCard video={video} key={video._id} setModalOpen={setModalOpen} modalOpen={modalOpen}/>

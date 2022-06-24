@@ -68,7 +68,7 @@ export const UploadVideo = () => {
             }}>
                 <div>
                     <label htmlFor="url">Enter Video Url</label>
-                    <input required type="text" placeholder="https://youtu.be/ video link" id = "url" onChange={(e) => inputValue("url", e.target.value)} />
+                    <input required type="text" placeholder="https://youtu.be/ video link" value={video.url} id = "url" onChange={(e) => inputValue("url", e.target.value)} />
                 </div>
                 <div>
                     <label htmlFor="title">Enter Video Title</label>
