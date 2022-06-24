@@ -10,7 +10,7 @@ export const PlaylistCard = ({ videoPlaylist, deletePlaylistFromServer , token, 
                 <div>
                     {videoPlaylist?.videos.length > 0 ?
                         <img src={`https://i.ytimg.com/vi/${findFirstVideoImg(videoPlaylist.videos)}/maxresdefault.jpg`} alt={videoPlaylist.title} /> :
-                        <img src={`https://i.ytimg.com/vi/sdsdfsfdsvfs/maxresdefault.jpg`} alt="empty-playlist-image" />
+                        <img src={`https://i.ytimg.com/vi/sdsdfsfdsvfs/maxresdefault.jpg`} alt="empty-playlist-image" style={{maxHeight: "186px"}}/>
                     }
                 </div>
                 <div className="playlist-card-count-section">

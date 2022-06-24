@@ -3,6 +3,8 @@ import { useVideoDataFromServer } from "../../context/video-context"
 import { useUserData } from "../../context/user-data-context"
 import "./upload.css"
 import { useDocumentTitle } from "../../hooks/useDocumentTilte"
+import { toast } from "react-toastify";
+
 export const UploadVideo = () => {
 
     const { userDataState, userDataDispatch } = useUserData()
@@ -19,7 +21,7 @@ export const UploadVideo = () => {
         url: "",
         notes:[],
     })
-    
+
     const initalvalue = {
         _id: "",
         title: "",
@@ -67,6 +69,7 @@ export const UploadVideo = () => {
                         video: { ...video, viewCount: 0 },
                     }
                 })
+                toast("Video uploaded")
                 setVideo(initalvalue)
             }}>
                 <div>

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./single-video-page.css"
 import { useVideoDataFromServer } from "../../context/video-context"
 import { VideoPlayer, VideoPlayerCentre, SignglePlayerFooter } from './components/video-player';
@@ -16,14 +16,23 @@ export const SingleVideoPage = () => {
     const { videoState } = useVideoDataFromServer()
     const { userDataState, userDataDispatch } = useUserData()
     const [modalOpen, setModalOpen] = useState(false)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!singlevideoid) {
+            navigate("/videos", { replace: true })
+        }
+    })
 
     const currentVideo = videoState.allVideos.find(videos => videos._id === singlevideoid)
     const categoryVideo = videoState.allVideos.filter(category => currentVideo.category === category.category && currentVideo._id !== category._id)
     const notes = userDataState?.notes.filter((note) => note.id === singlevideoid).sort((a, b) => b.noteCreatedTime - a.noteCreatedTime);
 
     useEffect(() => {
-        useDocumentTitle(currentVideo.title)
-    },[])
+        if (singlevideoid) {
+            useDocumentTitle(currentVideo?.title)
+        }
+    }, [])
 
     return (
         <div className="single-video-wrapper">
@@ -58,7 +67,7 @@ export const SingleVideoPage = () => {
                     {categoryVideo.map(video => {
                         return (
                             <div className="mt-1" key={video._id}>
-                                <VideoCard video={video} key={video._id} setModalOpen={setModalOpen} modalOpen={modalOpen}/>
+                                <VideoCard video={video} key={video._id} setModalOpen={setModalOpen} modalOpen={modalOpen} />
                             </div>
                         )
                     })}
